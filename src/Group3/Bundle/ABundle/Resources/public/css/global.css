@@ -9,7 +9,10 @@ a {
 
 /** Button Styles **/
 .primary-button,
-.secondary-button {
+.secondary-button,
+.add-button,
+.edit-button,
+.delete-button{
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
@@ -26,6 +29,18 @@ a {
     color: #666;
     padding: 0.5em 2em;
     font-size: 80%;
+}
+.add-button {
+    color: #fff;
+    background: rgb(28, 184, 65);
+}
+.edit-button {
+    color: #fff;
+    background: rgb(223, 117, 20);
+}
+.delete-button {
+    color: #fff;
+    background: rgb(202, 60, 60);
 }
 /** End Button Styles **/
 
@@ -98,6 +113,16 @@ nav .pure-menu.pure-menu-open {
     border-bottom: 1px solid #ddd;
     border-left: 6px solid transparent;
 }
+.list-item.controls{
+    text-align: right;
+}
+.list-item.pure-g a{
+    color: #333;
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
 .list-item .name{
     margin: 0;
     color: #999;

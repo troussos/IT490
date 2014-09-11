@@ -1,4 +1,5 @@
 <?php
+/** @author troussos **/
 
 namespace Group3\Bundle\ABundle\Controller;
 
@@ -7,16 +8,21 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
-class DefaultController extends Controller
+class OrderController extends Controller
 {
+
     /**
-     * @Route("/", name="_index")
+     * @Route("/order/{id}", name="orderGet")
      * @Method("GET")
+     *
+     * @param $id
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction()
+    public function getOrderAction($id = 0)
     {
-        return $this->render('Group3ABundle:pages:index.html.twig');
+        //TODO - Look up entities from the DB here and return a nicely formatted array
+        return $this->render('Group3ABundle:pages:order.html.twig');
     }
+
 }

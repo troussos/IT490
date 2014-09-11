@@ -66,7 +66,7 @@ class Customer
     /**
      * @var integer
      *
-     * @ORM\Column(name="zip", type="integer")
+     * @ORM\Column(name="zip", type="string", length=10)
      */
     private $zip;
 

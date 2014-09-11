@@ -1,4 +1,6 @@
 {% extends "base.html.twig" %}
+{% import "Group3ABundle:components:list-item.html.twig" as listItem %}
+{% import "Group3ABundle:components:list-header.html.twig" as listHeader %}
 
 {% block stylesheets %}
     {{parent()}}
@@ -18,10 +20,10 @@
                 <div class="pure-menu pure-menu-open">
                     <ul>
                         <li class="pure-menu-heading">Overwhelmed<br>Commerce</li>
-                        <li class="selected"><a href="#">Customers</a></li>
-                        <li><a href="#">Orders</a></li>
-                        <li><a href="#">Items</a></li>
-                        <li><a href="#">Shipments</a></li>
+                        <li {% if app.request.get('_route') starts with 'customer' %} class="selected"{% endif %}><a href="{{path('customerGet')}}">Customers</a></li>
+                        <li {% if app.request.get('_route') starts with 'order' %} class="selected"{% endif %}><a href="{{path('orderGet')}}">Orders</a></li>
+                        <li {% if app.request.get('_route') starts with 'item' %} class="selected"{% endif %}><a href="{{path('itemGet')}}">Items</a></li>
+                        <li {% if app.request.get('_route') starts with 'shipment' %} class="selected"{% endif %}><a href="{{path('shipmentGet')}}">Shipments</a></li>
                     </ul>
                 </div>
                 <button class="primary-button pure-button">Login</button>
@@ -29,51 +31,16 @@
         </nav>
 
         <div id="list" class="pure-u-1">
-            <div class="list-item selected pure-g">
-                <div class="pure-u">
-                    <h5 class="name">Customer Name</h5>
-                    <p class="desc">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse congue, dolor eget pellentesque porttitor, enim libero imperdiet nisi, sed euismod elit justo quis tellus.
-                    </p>
-                </div>
-            </div>
+            {% block list %}
+            {% endblock %}
         </div>
 
 
         <div id="main" class="pure-u-1">
             <div class="content">
-                <div class="content-header pure-g">
-                    <div class="pure-u-1-2">
-                        <h1 class="content-title">Large Title</h1>
-                        <p class="content-subtitle">
-                            Subtitle <a>Link to Somewhere</a> with <span>Date Time Section</span>
-                        </p>
-                    </div>
+                {% block content %}
 
-                    <div class="content-controls pure-u-1-2">
-                        <button class="secondary-button pure-button">Edit</button>
-                        <button class="secondary-button pure-button">Delete</button>
-                    </div>
-                </div>
-
-                <div class="content-body">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                    <p>
-                        Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                    <p>
-                        Aliquam ac feugiat dolor. Proin mattis massa sit amet enim iaculis tincidunt. Mauris tempor mi vitae sem aliquet pharetra. Fusce in dui purus, nec malesuada mauris. Curabitur ornare arcu quis mi blandit laoreet. Vivamus imperdiet fermentum mauris, ac posuere urna tempor at. Duis pellentesque justo ac sapien aliquet egestas. Morbi enim mi, porta eget ullamcorper at, pharetra id lorem.
-                    </p>
-                    <p>
-                        Donec sagittis dolor ut quam pharetra pretium varius in nibh. Suspendisse potenti. Donec imperdiet, velit vel adipiscing bibendum, leo eros tristique augue, eu rutrum lacus sapien vel quam. Nam orci arcu, luctus quis vestibulum ut, ullamcorper ut enim. Morbi semper erat quis orci aliquet condimentum. Nam interdum mauris sed massa dignissim rhoncus.
-                    </p>
-                    <p>
-                        Regards,<br>
-                        Tilo
-                    </p>
-                </div>
+                {% endblock %}
             </div>
         </div>
     </div>

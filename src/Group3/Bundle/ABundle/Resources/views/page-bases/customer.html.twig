@@ -1,0 +1,10 @@
+{% extends "Group3ABundle::layout.html.twig" %}
+
+{% block list %}
+    {{ listHeader.customerHeader() }}
+
+    {% for customer in customers %}
+        {{ listItem.customer(customer.id, customer.firstName, customer.lastName, customer.emailAddress, active)}}
+    {% endfor %}
+
+{% endblock %}

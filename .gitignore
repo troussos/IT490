@@ -33,6 +33,7 @@
 /web/assetic/
 /web/css/
 /web/uploads/
+/web/js/
 
 # PHPUnit
 /app/phpunit.xml

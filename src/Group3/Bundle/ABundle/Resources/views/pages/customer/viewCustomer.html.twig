@@ -1,0 +1,26 @@
+{% extends "Group3ABundle:page-bases:customer.html.twig" %}
+
+{% block content %}
+    {% if customer is not null %}
+        <div class="content-header pure-g">
+            <div class="pure-u-3-4">
+                <h1 class="content-title">{{customer.firstName}} {{customer.lastName}}</h1>
+                <p class="content-subtitle">
+                    <a href="mailto:{{customer.emailAddress}}">{{customer.emailAddress}}</a><br>
+                    {{customer.street}} <span>{{customer.city}}, {{customer.state}} {{customer.zip}}</span> {{customer.country}}
+                </p>
+            </div>
+
+            <div class="content-controls pure-u-1-4">
+                <a href="{{path('customerViewEdit', {'id': customer.id})}}" class="edit-button pure-button">Edit</a>
+                <a href="{{path('customerDelete', {'id': customer.id})}}" class="delete-button pure-button">Delete</a>
+            </div>
+        </div>
+
+        <div class="content-body">
+            <p>
+                Here We'll Have a big table of orders where you can head to each one and view what is happening.
+            </p>
+        </div>
+    {% endif %}
+{% endblock %}

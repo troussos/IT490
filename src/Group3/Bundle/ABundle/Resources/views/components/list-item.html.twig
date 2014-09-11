@@ -1,0 +1,67 @@
+{% macro customer(id, firstName, lastName, description, active) %}
+    {% if id == active %}
+        <div class="list-item pure-g selected">
+    {% else %}
+        <div class="list-item pure-g">
+    {% endif %}
+        <a href="{{path('customerGet', {'id': id})}}">
+            <div class="pure-u">
+                <h5 class="name">{{firstName}} {{lastName}}</h5>
+                <p class="desc">
+                    {{description}}
+                </p>
+            </div>
+        </a>
+    </div>
+{% endmacro %}
+
+{% macro item(id, firstName, lastName, description, url, active) %}
+    {% if id == active %}
+        <div class="list-item pure-g selected">
+    {% else %}
+        <div class="list-item pure-g">
+    {% endif %}
+        <a href="{{url}}">
+            <div class="pure-u">
+                <h5 class="name">{{firstName}} {{lastName}}</h5>
+                <p class="desc">
+                    {{description}}
+                </p>
+            </div>
+        </a>
+    </div>
+{% endmacro %}
+
+{% macro order(id, firstName, lastName, description, url, active) %}
+    {% if id == active %}
+        <div class="list-item pure-g selected">
+    {% else %}
+        <div class="list-item pure-g">
+    {% endif %}
+        <a href="{{url}}">
+            <div class="pure-u">
+                <h5 class="name">{{firstName}} {{lastName}}</h5>
+                <p class="desc">
+                    {{description}}
+                </p>
+            </div>
+        </a>
+    </div>
+{% endmacro %}
+
+{% macro shipment(id, firstName, lastName, description, url, active) %}
+    {% if id == active %}
+        <div class="list-item pure-g selected">
+    {% else %}
+        <div class="list-item pure-g">
+    {% endif %}
+        <a href="{{url}}">
+            <div class="pure-u">
+                <h5 class="name">{{firstName}} {{lastName}}</h5>
+                <p class="desc">
+                    {{description}}
+                </p>
+            </div>
+        </a>
+    </div>
+{% endmacro %}
