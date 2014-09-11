@@ -30,6 +30,8 @@
 
 # Assets and user uploads
 /web/bundles/
+/web/assetic/
+/web/css/
 /web/uploads/
 
 # PHPUnit
