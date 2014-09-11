@@ -1,6 +1,9 @@
 # PHPStorm config files
 .idea/*
 
+# Ignore OSX Finder Layout Files
+*.DS_Store
+
 # Cache and logs (Symfony2)
 /app/cache/*
 /app/logs/*

@@ -1,0 +1,7 @@
+parameters:
+#    group3_a.example.class: Group3\Bundle\ABundle\Example
+
+services:
+#    group3_a.example:
+#        class: %group3_a.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

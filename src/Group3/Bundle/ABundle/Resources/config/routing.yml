@@ -1,0 +1,3 @@
+group3_a_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: Group3ABundle:Default:index }

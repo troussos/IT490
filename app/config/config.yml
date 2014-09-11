@@ -67,3 +67,8 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+sp_bower:
+    bundles:
+        Group3ABundle: ~
+    install_on_warmup: true

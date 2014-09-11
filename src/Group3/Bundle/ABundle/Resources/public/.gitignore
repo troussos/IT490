@@ -1,0 +1,2 @@
+# Ignoring all of the bower vendor files
+components/*

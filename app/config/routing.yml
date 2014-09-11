@@ -1,0 +1,4 @@
+group3_a:
+    resource: "@Group3ABundle/Resources/config/routing.yml"
+    prefix:   /
+
