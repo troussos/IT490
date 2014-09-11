@@ -1,6 +1,10 @@
 {
     "name": "group-3-a-bundle",
+    "license": "MIT",
+    "private": true,
     "dependencies": {
-        "jquery": "~1.8.2"
+        "pure": "~0.5.0",
+        "angular": "~1.2.x",
+        "angular-route": "~1.2.x"
     }
 }

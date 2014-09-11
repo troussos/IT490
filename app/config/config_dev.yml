@@ -32,5 +32,8 @@ monolog:
 assetic:
     use_controller: "%use_assetic_controller%"
 
+twig:
+    cache: false
+
 #swiftmailer:
 #    delivery_address: me@example.com
