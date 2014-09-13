@@ -12,7 +12,8 @@ a {
 .secondary-button,
 .add-button,
 .edit-button,
-.delete-button{
+.delete-button,
+.save-button{
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
@@ -41,6 +42,9 @@ a {
 .delete-button {
     color: #fff;
     background: rgb(202, 60, 60);
+}
+.pure-form .save-button{
+    float:right;
 }
 /** End Button Styles **/
 
@@ -170,6 +174,12 @@ nav .pure-menu.pure-menu-open {
         }
 /** End Main Content Styles **/
 
+/** Header Styles **/
+h1.create-header{
+    margin-left: 2em;
+}
+/** End Header Styles **/
+
 /** Tablet Media Queries **/
 @media (min-width: 40em) {
 
@@ -238,6 +248,7 @@ nav .pure-menu.pure-menu-open {
         position: static;
         margin: 0;
         padding: 0;
+        width: 95%;
     }
 }
 /** End Desktop Media Queries **/

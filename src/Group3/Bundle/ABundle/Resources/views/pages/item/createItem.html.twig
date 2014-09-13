@@ -1,10 +1,10 @@
-{% extends "Group3ABundle:page-bases:customer.html.twig" %}
+{% extends "Group3ABundle:page-bases:item.html.twig" %}
 {% form_theme form 'Group3ABundle:forms:fields.html.twig' %}
 {% block content %}
     {% if active == 0 %}
-        <h1 class="create-header">Create a New Customer</h1>
+        <h1 class="create-header">Create a New Item</h1>
     {% else %}
-        <h1 class="create-header">Editing {{customer.firstName}} {{customer.lastName}}</h1>
+        <h1 class="create-header">Editing {{item.itemName}}</h1>
     {% endif %}
     {{ form(form, { 'attr': {'class': 'pure-form pure-form-aligned'}}) }}
 {% endblock %}

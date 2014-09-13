@@ -1,0 +1,12 @@
+.pure-form ul{
+    margin-left: 9em;
+}
+
+.pure-form ul li{
+    list-style: none;
+    color: #c23c3c;
+}
+
+.pure-form div.input{
+    display: inline-block;
+}

@@ -4,7 +4,7 @@
     {{ listHeader.customerHeader() }}
 
     {% for customer in customers %}
-        {{ listItem.customer(customer.id, customer.firstName, customer.lastName, customer.emailAddress, active)}}
+        {{ listItem.customer(customer, active)}}
     {% endfor %}
 
 {% endblock %}

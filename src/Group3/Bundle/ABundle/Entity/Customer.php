@@ -3,6 +3,7 @@
 namespace Group3\Bundle\ABundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Customer
@@ -24,6 +25,7 @@ class Customer
     /**
      * @var string
      *
+     * @Assert\NotBlank(message="The first name cannot be blank")
      * @ORM\Column(name="first_name", type="string", length=255)
      */
     private $firstName;
@@ -31,6 +33,7 @@ class Customer
     /**
      * @var string
      *
+     * @Assert\NotBlank(message="The last name cannot be blank")
      * @ORM\Column(name="last_name", type="string", length=255)
      */
     private $lastName;
@@ -38,6 +41,11 @@ class Customer
     /**
      * @var string
      *
+     * @Assert\NotBlank(message="The email address cannot be blank")
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email.",
+     *     checkMX = true
+     * )
      * @ORM\Column(name="email_address", type="string", length=255)
      */
     private $emailAddress;
@@ -45,6 +53,7 @@ class Customer
     /**
      * @var string
      *
+     * @Assert\NotBlank(message="The street cannot be blank")
      * @ORM\Column(name="street", type="string", length=255)
      */
     private $street;
@@ -52,6 +61,7 @@ class Customer
     /**
      * @var string
      *
+     * @Assert\NotBlank(message="The city cannot be blank")
      * @ORM\Column(name="city", type="string", length=255)
      */
     private $city;
@@ -59,20 +69,28 @@ class Customer
     /**
      * @var string
      *
+     * @Assert\NotBlank(message="The state cannot be blank")
+     * @Assert\Length(
+     *      min = "2",
+     *      max="2",
+     *      exactMessage="The state must be two characters long")
      * @ORM\Column(name="state", type="string", length=2)
      */
     private $state;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="zip", type="string", length=10)
+     * @Assert\NotBlank(message="The zip code cannot be blank")
+     * @Assert\Length(min = "5", max="5", exactMessage="The zipcode must be 5 digits long")
+     * @ORM\Column(name="zip", type="string", length=5)
      */
     private $zip;
 
     /**
      * @var string
      *
+     * @Assert\NotBlank(message="The country cannot be blank")
      * @ORM\Column(name="country", type="string", length=255)
      */
     private $country;
@@ -270,5 +288,14 @@ class Customer
     public function getCountry()
     {
         return $this->country;
+    }
+
+    /**
+     * Override the __toString method, outputting the customer name.
+     *
+     * @return string
+     */
+    public function __toString(){
+        return $this->firstName . ' ' . $this->lastName;
     }
 }

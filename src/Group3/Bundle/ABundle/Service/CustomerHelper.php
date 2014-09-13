@@ -3,22 +3,28 @@
 
 namespace Group3\Bundle\ABundle\Service;
 
-
-use Doctrine\ORM\EntityManager;
 use Group3\Bundle\ABundle\Entity\Customer;
+use Doctrine\ORM\EntityManager;
 
-class CustomerHelper
+class CustomerHelper extends BaseEntityService
 {
     /**
-     * @var EntityManager
+     * @param EntityManager $em
      */
-    private $entityManager;
-
     public function __construct(EntityManager $em)
     {
-        $this->entityManager = $em;
+        parent::__construct($em);
+        self::$entityName = 'Customer';
     }
 
+    /**
+     * Return a customer object if the customer id exists, otherwise return an empty
+     * customer object
+     *
+     * @param $id
+     *
+     * @return Customer|null|object
+     */
     public function getCustomerIfExists($id)
     {
         if (empty($id))
@@ -26,33 +32,48 @@ class CustomerHelper
             return new Customer();
         }
 
-        return $this->entityManager->find('Group3ABundle:Customer',$id);
+        return $this->getCustomerById($id);
     }
 
+    /**
+     * Helper function to save the customer entity
+     *
+     * @param Customer $customer
+     */
     public function saveCustomer(Customer $customer)
     {
-        $this->entityManager->persist($customer);
-        $this->entityManager->flush();
+        $this->saveEntity($customer);
     }
 
+    /**
+     * Remove the customer based on its id
+     *
+     * @param $id
+     */
     public function removeCustomer($id)
     {
-        $customer = $this->entityManager->find('Group3ABundle:Customer',$id);
-
-        $this->entityManager->remove($customer);
-        $this->entityManager->flush();
+        $this->removeEntityById($id);
     }
 
+    /**
+     * Get a customer object based on id
+     *
+     * @param $id
+     *
+     * @return null|object
+     */
     public function getCustomerById($id)
     {
-        if(!empty($id))
-        {
-            return $this->entityManager->find('Group3ABundle:Customer',$id);
-        }
+        return $this->getEntityById($id);
     }
 
+    /**
+     * Return all of the customers
+     *
+     * @return array
+     */
     public function getAllCustomers()
     {
-        return $this->entityManager->getRepository('Group3ABundle:Customer')->findAll();
+        return $this->getAllOfEntity();
     }
 }

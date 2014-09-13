@@ -50,6 +50,17 @@ class CustomerOrder
      */
     private $orderStatus;
 
+    /**
+     * @var
+     *
+     * @ORM\ManyToMany(targetEntity="OrderDetail")
+     * @ORM\JoinTable(name="join_orderDetail",
+     *      joinColumns={@ORM\JoinColumn(name="order_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="orderDetail_id", referencedColumnName="id", unique=true)}
+     *      )
+     **/
+    private $orderDetails;
+
 
     /**
      * Get id
@@ -150,6 +161,25 @@ class CustomerOrder
     public function getCustomer()
     {
         return $this->customer;
+    }
+
+    /**
+     * @param mixed $orderDetails
+     *
+     * @return CustomerOrder
+     */
+    public function setOrderDetails($orderDetails)
+    {
+        $this->orderDetails = $orderDetails;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOrderDetails()
+    {
+        return $this->orderDetails;
     }
 
 }

@@ -1,48 +1,48 @@
-{% macro customer(id, firstName, lastName, description, active) %}
-    {% if id == active %}
+{% macro customer(customer, active) %}
+    {% if customer.id == active %}
         <div class="list-item pure-g selected">
     {% else %}
         <div class="list-item pure-g">
     {% endif %}
-        <a href="{{path('customerGet', {'id': id})}}">
+        <a href="{{path('customerGet', {'id': customer.id})}}">
             <div class="pure-u">
-                <h5 class="name">{{firstName}} {{lastName}}</h5>
+                <h5 class="name">{{customer.firstName}} {{customer.lastName}}</h5>
                 <p class="desc">
-                    {{description}}
+                    {{customer.emailAddress}}
                 </p>
             </div>
         </a>
     </div>
 {% endmacro %}
 
-{% macro item(id, firstName, lastName, description, url, active) %}
-    {% if id == active %}
+{% macro item(item, active) %}
+    {% if item.id == active %}
         <div class="list-item pure-g selected">
     {% else %}
         <div class="list-item pure-g">
     {% endif %}
-        <a href="{{url}}">
+        <a href="{{path('itemGet', {'id': item.id})}}">
             <div class="pure-u">
-                <h5 class="name">{{firstName}} {{lastName}}</h5>
+                <h5 class="name">{{item.itemName}}</h5>
                 <p class="desc">
-                    {{description}}
+                    {{item.itemDescription}}
                 </p>
             </div>
         </a>
     </div>
 {% endmacro %}
 
-{% macro order(id, firstName, lastName, description, url, active) %}
-    {% if id == active %}
+{% macro order(order, active) %}
+    {% if order.id == active %}
         <div class="list-item pure-g selected">
     {% else %}
         <div class="list-item pure-g">
     {% endif %}
-        <a href="{{url}}">
+        <a href="{{path('orderGet', {'id': order.id})}}">
             <div class="pure-u">
-                <h5 class="name">{{firstName}} {{lastName}}</h5>
+                <h5 class="name">Order #{{order.id}} - {{order.orderDate | date('m/d/y')}}</h5>
                 <p class="desc">
-                    {{description}}
+                    Ordered By: {{order.customer.firstName}} {{order.customer.lastName}}
                 </p>
             </div>
         </a>

@@ -1,1 +1,10 @@
 {% extends "Group3ABundle::layout.html.twig" %}
+
+{% block list %}
+    {{ listHeader.itemHeader() }}
+
+    {% for item in items %}
+        {{ listItem.item(item)}}
+    {% endfor %}
+
+{% endblock %}

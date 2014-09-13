@@ -38,7 +38,11 @@ class CustomerController extends Controller
 
         return $this->render(
             'Group3ABundle:pages/customer:createCustomer.html.twig',
-            array('active' => $id, 'form' => $form->createView())
+            array(
+                'active' => $id,
+                'form' => $form->createView(),
+                'customer' => $customer
+            )
         );
     }
 
@@ -68,11 +72,22 @@ class CustomerController extends Controller
 
             $customerHelper->saveCustomer($customer);
 
+            $this->get('session')->getFlashBag()->add('success', 'Customer Successfully Saved');
+
             return $this->redirect(
                 $this->generateUrl('customerGet', array('id'=>$customer->getId()))
             );
         }
-        // TODO Redirect back with errors
+        $this->get('session')->getFlashBag()->add('warning', 'Error Saving Customer');
+
+        return $this->render(
+            'Group3ABundle:pages/customer:createCustomer.html.twig',
+            array(
+                'active' => $id,
+                'form' => $form->createView(),
+                'customer' => $customer
+            )
+        );
     }
 
     /**
@@ -87,6 +102,8 @@ class CustomerController extends Controller
     {
         $customerHelper = $this->get('group3_a.customer_helper');
         $customerHelper->removeCustomer($id);
+
+        $this->get('session')->getFlashBag()->add('failure', 'Customer Successfully Deleted');
 
         return $this->redirect(
             $this->generateUrl('customerGet')

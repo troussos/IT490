@@ -1,1 +1,10 @@
 {% extends "Group3ABundle::layout.html.twig" %}
+
+{% block list %}
+    {{ listHeader.orderHeader() }}
+
+    {% for order in orders %}
+        {{ listItem.order(order)}}
+    {% endfor %}
+
+{% endblock %}

@@ -1,6 +1,23 @@
 {% macro customerHeader() %}
     <div class="list-item controls">
-        <a href="/customer/create" class="add-button pure-button">
+        <a href="{{path('customerViewCreate')}}" class="add-button pure-button">
+            Create
+        </a>
+    </div>
+{% endmacro %}
+
+{% macro itemHeader() %}
+    <div class="list-item controls">
+        <a href="{{path('itemViewCreate')}}" class="add-button pure-button">
+            Create
+        </a>
+    </div>
+{% endmacro %}
+
+
+{% macro orderHeader() %}
+    <div class="list-item controls">
+        <a href="{{path('orderViewCreate')}}" class="add-button pure-button">
             Create
         </a>
     </div>

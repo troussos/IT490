@@ -1,7 +1,15 @@
 parameters:
   customer.class: Group3\Bundle\ABundle\Service\CustomerHelper
+  item.class:     Group3\Bundle\ABundle\Service\ItemHelper
+  order.class:    Group3\Bundle\ABundle\Service\OrderHelper
 
 services:
   group3_a.customer_helper:
     class: %customer.class%
     arguments: [@doctrine.orm.default_entity_manager  ]
+  group3_a.item_helper:
+      class: %item.class%
+      arguments: [@doctrine.orm.default_entity_manager  ]
+  group3_a.order_helper:
+      class: %order.class%
+      arguments: [@doctrine.orm.default_entity_manager  ]

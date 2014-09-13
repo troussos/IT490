@@ -22,14 +22,6 @@ class OrderDetail
     private $id;
 
     /**
-     * @var CustomerOrder
-     *
-     * @ORM\ManyToOne(targetEntity="CustomerOrder")
-     * @ORM\JoinColumn(name="order_id", referencedColumnName="id")
-     */
-    private $order;
-
-    /**
      * @var Inventory
      *
      * @ORM\ManyToOne(targetEntity="Inventory")
@@ -99,28 +91,5 @@ class OrderDetail
     {
         return $this->item;
     }
-
-    /**
-     * Set Order
-     *
-     * @param CustomerOrder $order
-     * @return OrderDetail
-     */
-    public function setOrder(CustomerOrder $order)
-    {
-        $this->order = $order;
-        return $this;
-    }
-
-    /**
-     * Get Order
-     *
-     * @return CustomerOrder
-     */
-    public function getOrder()
-    {
-        return $this->order;
-    }
-
 
 }

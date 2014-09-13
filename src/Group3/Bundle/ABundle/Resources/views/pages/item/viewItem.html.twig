@@ -1,0 +1,26 @@
+{% extends "Group3ABundle:page-bases:item.html.twig" %}
+
+{% block content %}
+    {% if item is not null %}
+        <div class="content-header pure-g">
+            <div class="pure-u-3-4">
+                <h1 class="content-title">{{item.itemName}}</h1>
+                <p class="content-subtitle">
+                    <span>{{item.itemDescription}}</span><br>
+                    Quantity: {{item.quantityInStock}} Price: {{item.price}}
+                </p>
+            </div>
+
+            <div class="content-controls pure-u-1-4">
+                <a href="{{path('itemViewEdit', {'id': item.id})}}" class="edit-button pure-button">Edit</a>
+                <a href="{{path('itemDelete', {'id': item.id})}}" class="delete-button pure-button">Delete</a>
+            </div>
+        </div>
+
+        <div class="content-body">
+            <p>
+                Here We'll Have a big table of orders where you can see what orders have this item in it (MAYBE)
+            </p>
+        </div>
+    {% endif %}
+{% endblock %}

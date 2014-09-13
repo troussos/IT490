@@ -3,6 +3,7 @@
 namespace Group3\Bundle\ABundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Inventory
@@ -24,6 +25,7 @@ class Inventory
     /**
      * @var string
      *
+     * @Assert\NotBlank(message="The item name cannot be blank")
      * @ORM\Column(name="item_name", type="string", length=255)
      */
     private $itemName;
@@ -31,6 +33,7 @@ class Inventory
     /**
      * @var string
      *
+     * @Assert\NotBlank(message="The item description cannot be blank")
      * @ORM\Column(name="item_description", type="text")
      */
     private $itemDescription;
@@ -38,6 +41,8 @@ class Inventory
     /**
      * @var integer
      *
+     * @Assert\NotBlank(message="The quantity cannot be blank")
+     * @Assert\Type(type="integer", message="The quantity must an numeric")
      * @ORM\Column(name="quantity_in_stock", type="integer")
      */
     private $quantityInStock;
@@ -45,6 +50,8 @@ class Inventory
     /**
      * @var float
      *
+     * @Assert\NotBlank(message="The price cannot be blank")
+     * @Assert\Type(type="float", message="The price must an numeric")
      * @ORM\Column(name="price", type="float")
      */
     private $price;

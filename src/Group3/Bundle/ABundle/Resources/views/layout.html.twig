@@ -6,12 +6,22 @@
     {{parent()}}
     {% stylesheets filter='cssrewrite'
         "@Group3ABundle/Resources/public/css/global.css"
+        "@Group3ABundle/Resources/public/css/alert-bar.css"
+        "@Group3ABundle/Resources/public/css/form.css"
     %}
     <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen"/>
     {% endstylesheets %}
 {% endblock %}
 
 {% block body %}
+    {% for label, flashes in app.session.flashbag.all %}
+        <div id="alert">
+            {% for flash in flashes %}
+                <a class="alert alert-{{ label }}" href="#alert">{{ flash }}</a>
+            {% endfor %}
+        </div>
+    {% endfor %}
+
     <div id="layout" class="content pure-g">
         <nav id="nav" class="pure-u">
             <a href="#" class="nav-menu-button">Menu</a>
