@@ -21,7 +21,6 @@ class Customer
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
     /**
      * @var string
      *
@@ -29,7 +28,6 @@ class Customer
      * @ORM\Column(name="first_name", type="string", length=255)
      */
     private $firstName;
-
     /**
      * @var string
      *
@@ -37,7 +35,6 @@ class Customer
      * @ORM\Column(name="last_name", type="string", length=255)
      */
     private $lastName;
-
     /**
      * @var string
      *
@@ -49,7 +46,6 @@ class Customer
      * @ORM\Column(name="email_address", type="string", length=255)
      */
     private $emailAddress;
-
     /**
      * @var string
      *
@@ -57,7 +53,6 @@ class Customer
      * @ORM\Column(name="street", type="string", length=255)
      */
     private $street;
-
     /**
      * @var string
      *
@@ -65,7 +60,6 @@ class Customer
      * @ORM\Column(name="city", type="string", length=255)
      */
     private $city;
-
     /**
      * @var string
      *
@@ -77,7 +71,6 @@ class Customer
      * @ORM\Column(name="state", type="string", length=2)
      */
     private $state;
-
     /**
      * @var string
      *
@@ -86,7 +79,6 @@ class Customer
      * @ORM\Column(name="zip", type="string", length=5)
      */
     private $zip;
-
     /**
      * @var string
      *
@@ -103,7 +95,7 @@ class Customer
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -111,9 +103,20 @@ class Customer
     }
 
     /**
+     * Get firstName
+     *
+     * @return string
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
      * Set firstName
      *
      * @param string $firstName
+     *
      * @return Customer
      */
     public function setFirstName($firstName)
@@ -124,19 +127,20 @@ class Customer
     }
 
     /**
-     * Get firstName
+     * Get lastName
      *
-     * @return string 
+     * @return string
      */
-    public function getFirstName()
+    public function getLastName()
     {
-        return $this->firstName;
+        return $this->lastName;
     }
 
     /**
      * Set lastName
      *
      * @param string $lastName
+     *
      * @return Customer
      */
     public function setLastName($lastName)
@@ -147,19 +151,20 @@ class Customer
     }
 
     /**
-     * Get lastName
+     * Get emailAddress
      *
-     * @return string 
+     * @return string
      */
-    public function getLastName()
+    public function getEmailAddress()
     {
-        return $this->lastName;
+        return $this->emailAddress;
     }
 
     /**
      * Set emailAddress
      *
      * @param string $emailAddress
+     *
      * @return Customer
      */
     public function setEmailAddress($emailAddress)
@@ -170,19 +175,20 @@ class Customer
     }
 
     /**
-     * Get emailAddress
+     * Get street
      *
-     * @return string 
+     * @return string
      */
-    public function getEmailAddress()
+    public function getStreet()
     {
-        return $this->emailAddress;
+        return $this->street;
     }
 
     /**
      * Set street
      *
      * @param string $street
+     *
      * @return Customer
      */
     public function setStreet($street)
@@ -193,19 +199,20 @@ class Customer
     }
 
     /**
-     * Get street
+     * Get city
      *
-     * @return string 
+     * @return string
      */
-    public function getStreet()
+    public function getCity()
     {
-        return $this->street;
+        return $this->city;
     }
 
     /**
      * Set city
      *
      * @param string $city
+     *
      * @return Customer
      */
     public function setCity($city)
@@ -216,19 +223,20 @@ class Customer
     }
 
     /**
-     * Get city
+     * Get state
      *
-     * @return string 
+     * @return string
      */
-    public function getCity()
+    public function getState()
     {
-        return $this->city;
+        return $this->state;
     }
 
     /**
      * Set state
      *
      * @param string $state
+     *
      * @return Customer
      */
     public function setState($state)
@@ -239,19 +247,20 @@ class Customer
     }
 
     /**
-     * Get state
+     * Get zip
      *
-     * @return string 
+     * @return integer
      */
-    public function getState()
+    public function getZip()
     {
-        return $this->state;
+        return $this->zip;
     }
 
     /**
      * Set zip
      *
      * @param integer $zip
+     *
      * @return Customer
      */
     public function setZip($zip)
@@ -262,19 +271,20 @@ class Customer
     }
 
     /**
-     * Get zip
+     * Get country
      *
-     * @return integer 
+     * @return string
      */
-    public function getZip()
+    public function getCountry()
     {
-        return $this->zip;
+        return $this->country;
     }
 
     /**
      * Set country
      *
      * @param string $country
+     *
      * @return Customer
      */
     public function setCountry($country)
@@ -285,13 +295,22 @@ class Customer
     }
 
     /**
-     * Get country
-     *
-     * @return string 
+     * @return mixed
      */
-    public function getCountry()
+    public function getOrders()
     {
-        return $this->country;
+        return $this->orders;
+    }
+
+    /**
+     * @param mixed $orders
+     *
+     * @return Customer
+     */
+    public function setOrders($orders)
+    {
+        $this->orders = $orders;
+        return $this;
     }
 
     /**
@@ -299,7 +318,8 @@ class Customer
      *
      * @return string
      */
-    public function __toString(){
+    public function __toString()
+    {
         return $this->firstName . ' ' . $this->lastName;
     }
 }

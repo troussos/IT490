@@ -20,7 +20,6 @@ class CustomerOrder
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
     /**
      * @var Customer
      *
@@ -28,28 +27,24 @@ class CustomerOrder
      * @ORM\JoinTable(name="join_customerOrder")
      */
     private $customer;
-
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="order_date", type="datetime")
      */
     private $orderDate;
-
     /**
      * @var float
      *
      * @ORM\Column(name="total_amount", type="float")
      */
     private $totalAmount;
-
     /**
      * @var string
      *
      * @ORM\Column(name="order_status", type="string", length=255)
      */
     private $orderStatus;
-
     /**
      * @ORM\ManyToMany(targetEntity="OrderDetail")
      * @ORM\JoinTable(name="join_orderDetail",
@@ -58,25 +53,21 @@ class CustomerOrder
      *      )
      **/
     private $orderDetails;
-
     /**
      * @var Invoice
      *
      * @ORM\OneToOne(targetEntity="Invoice", mappedBy="order")
      **/
     private $invoice;
-
-
     /**
      * @ORM\OneToOne(targetEntity="Shipment", mappedBy="order")
      */
     private $shippment;
 
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -84,9 +75,20 @@ class CustomerOrder
     }
 
     /**
+     * Get orderDate
+     *
+     * @return \DateTime
+     */
+    public function getOrderDate()
+    {
+        return $this->orderDate;
+    }
+
+    /**
      * Set orderDate
      *
      * @param \DateTime $orderDate
+     *
      * @return CustomerOrder
      */
     public function setOrderDate($orderDate)
@@ -97,19 +99,20 @@ class CustomerOrder
     }
 
     /**
-     * Get orderDate
+     * Get totalAmount
      *
-     * @return \DateTime 
+     * @return float
      */
-    public function getOrderDate()
+    public function getTotalAmount()
     {
-        return $this->orderDate;
+        return $this->totalAmount;
     }
 
     /**
      * Set totalAmount
      *
      * @param float $totalAmount
+     *
      * @return CustomerOrder
      */
     public function setTotalAmount($totalAmount)
@@ -120,32 +123,9 @@ class CustomerOrder
     }
 
     /**
-     * Get totalAmount
-     *
-     * @return float 
-     */
-    public function getTotalAmount()
-    {
-        return $this->totalAmount;
-    }
-
-    /**
-     * Set orderStatus
-     *
-     * @param string $orderStatus
-     * @return CustomerOrder
-     */
-    public function setOrderStatus($orderStatus)
-    {
-        $this->orderStatus = $orderStatus;
-
-        return $this;
-    }
-
-    /**
      * Get orderStatus
      *
-     * @return string 
+     * @return string
      */
     public function getOrderStatus()
     {
@@ -153,14 +133,16 @@ class CustomerOrder
     }
 
     /**
-     * Set Customer
+     * Set orderStatus
      *
-     * @param Customer $customer
+     * @param string $orderStatus
+     *
      * @return CustomerOrder
      */
-    public function setCustomer(Customer $customer)
+    public function setOrderStatus($orderStatus)
     {
-        $this->customer = $customer;
+        $this->orderStatus = $orderStatus;
+
         return $this;
     }
 
@@ -172,6 +154,27 @@ class CustomerOrder
     public function getCustomer()
     {
         return $this->customer;
+    }
+
+    /**
+     * Set Customer
+     *
+     * @param Customer $customer
+     *
+     * @return CustomerOrder
+     */
+    public function setCustomer(Customer $customer)
+    {
+        $this->customer = $customer;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOrderDetails()
+    {
+        return $this->orderDetails;
     }
 
     /**
@@ -188,9 +191,40 @@ class CustomerOrder
     /**
      * @return mixed
      */
-    public function getOrderDetails()
+    public function getInvoice()
     {
-        return $this->orderDetails;
+        return $this->invoice;
     }
+
+    /**
+     * @param mixed $invoice
+     *
+     * @return CustomerOrder
+     */
+    public function setInvoice($invoice)
+    {
+        $this->invoice = $invoice;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getShippment()
+    {
+        return $this->shippment;
+    }
+
+    /**
+     * @param mixed $shippment
+     *
+     * @return CustomerOrder
+     */
+    public function setShippment($shippment)
+    {
+        $this->shippment = $shippment;
+        return $this;
+    }
+
 
 }
