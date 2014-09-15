@@ -24,8 +24,8 @@ class CustomerOrder
     /**
      * @var Customer
      *
-     * @ORM\ManyToOne(targetEntity="Customer")
-     * @ORM\JoinColumn(name="customer_id", referencedColumnName="id")
+     * @ORM\ManyToMany(targetEntity="Customer", inversedBy="orders")
+     * @ORM\JoinTable(name="join_customerOrder")
      */
     private $customer;
 
@@ -51,8 +51,6 @@ class CustomerOrder
     private $orderStatus;
 
     /**
-     * @var
-     *
      * @ORM\ManyToMany(targetEntity="OrderDetail")
      * @ORM\JoinTable(name="join_orderDetail",
      *      joinColumns={@ORM\JoinColumn(name="order_id", referencedColumnName="id")},
@@ -60,6 +58,19 @@ class CustomerOrder
      *      )
      **/
     private $orderDetails;
+
+    /**
+     * @var Invoice
+     *
+     * @ORM\OneToOne(targetEntity="Invoice", mappedBy="order")
+     **/
+    private $invoice;
+
+
+    /**
+     * @ORM\OneToOne(targetEntity="Shipment", mappedBy="order")
+     */
+    private $shippment;
 
 
     /**

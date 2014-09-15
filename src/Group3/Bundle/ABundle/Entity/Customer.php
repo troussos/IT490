@@ -95,6 +95,10 @@ class Customer
      */
     private $country;
 
+    /*
+     * @ORM\ManyToMany(targetEntity="CustomerOrder", mappedBy="customer")
+     */
+    private $orders;
 
     /**
      * Get id

@@ -24,7 +24,7 @@ class Invoice
     /**
      * @var CustomerOrder
      *
-     * @ORM\ManyToOne(targetEntity="CustomerOrder")
+     * @ORM\OneToOne(targetEntity="CustomerOrder", inversedBy="invoice")
      * @ORM\JoinColumn(name="order_id", referencedColumnName="id")
      */
     private $order;
