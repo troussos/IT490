@@ -15,7 +15,7 @@ class Invoice
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="invoice_id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -25,7 +25,7 @@ class Invoice
      * @var CustomerOrder
      *
      * @ORM\OneToOne(targetEntity="CustomerOrder", inversedBy="invoice")
-     * @ORM\JoinColumn(name="order_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="order_id", referencedColumnName="customer_order_id")
      */
     private $order;
 

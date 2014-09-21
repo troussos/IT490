@@ -15,7 +15,7 @@ class CustomerOrder
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="customer_order_id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -23,8 +23,8 @@ class CustomerOrder
     /**
      * @var Customer
      *
-     * @ORM\ManyToMany(targetEntity="Customer", inversedBy="orders")
-     * @ORM\JoinTable(name="join_customerOrder")
+     * @ORM\ManyToOne(targetEntity="Customer", inversedBy="orders")
+     * @ORM\JoinColumn(name="customer_id", referencedColumnName="customer_id")
      */
     private $customer;
     /**
@@ -48,8 +48,8 @@ class CustomerOrder
     /**
      * @ORM\ManyToMany(targetEntity="OrderDetail")
      * @ORM\JoinTable(name="join_orderDetail",
-     *      joinColumns={@ORM\JoinColumn(name="order_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="orderDetail_id", referencedColumnName="id", unique=true)}
+     *      joinColumns={@ORM\JoinColumn(name="order_id", referencedColumnName="customer_order_id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="orderDetail_id", referencedColumnName="order_id", unique=true)}
      *      )
      **/
     private $orderDetails;
@@ -225,6 +225,5 @@ class CustomerOrder
         $this->shippment = $shippment;
         return $this;
     }
-
 
 }

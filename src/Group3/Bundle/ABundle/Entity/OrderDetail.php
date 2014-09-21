@@ -15,7 +15,7 @@ class OrderDetail
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="order_id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -25,7 +25,7 @@ class OrderDetail
      * @var Inventory
      *
      * @ORM\ManyToOne(targetEntity="Inventory")
-     * @ORM\JoinColumn(name="item_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="item_id", referencedColumnName="inventory_id")
      */
     private $item;
 

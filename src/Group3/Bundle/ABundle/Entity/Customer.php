@@ -5,6 +5,9 @@ namespace Group3\Bundle\ABundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
+use Doctrine\Common\Collections\Collection,
+    Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * Customer
  *
@@ -16,7 +19,7 @@ class Customer
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="customer_id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -88,9 +91,14 @@ class Customer
     private $country;
 
     /*
-     * @ORM\ManyToMany(targetEntity="CustomerOrder", mappedBy="customer")
+     * @ORM\OneToMany(targetEntity="CustomerOrder", mappedBy="customer", cascade={"persist","remove"})
      */
     private $orders;
+
+    public function __construct()
+    {
+        $this->orders = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -321,5 +329,11 @@ class Customer
     public function __toString()
     {
         return $this->firstName . ' ' . $this->lastName;
+    }
+
+    public function addOrder(CustomerOrder $order)
+    {
+        $this->orders[] = $order;
+        return $this;
     }
 }
