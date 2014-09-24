@@ -90,14 +90,15 @@ class Customer
      */
     private $country;
 
-    /*
+    /**
      * @ORM\OneToMany(targetEntity="CustomerOrder", mappedBy="customer", cascade={"persist","remove"})
      */
     private $orders;
 
     public function __construct()
     {
-        $this->orders = new ArrayCollection();
+        $this->orders = new ArrayCollection;
+        return $this;
     }
 
     /**

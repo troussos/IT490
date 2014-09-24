@@ -7,7 +7,7 @@
                 <h1 class="content-title">{{item.itemName}}</h1>
                 <p class="content-subtitle">
                     <span>{{item.itemDescription}}</span><br>
-                    Quantity: {{item.quantityInStock}} Price: {{item.price}}
+                    Quantity: {{item.quantityInStock}} Price: ${{item.price |number_format(2, '.', ',') }}
                 </p>
             </div>
 

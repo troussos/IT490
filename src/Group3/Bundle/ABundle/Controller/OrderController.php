@@ -150,8 +150,8 @@ class OrderController extends Controller
         /**
          * @var OrderHelper
          */
-        $orderHelper = $this->get('group3_a.order_helper');
-        $params['orders'] =  $orderHelper->getAllOrders();
+        $orderHelper      = $this->get('group3_a.order_helper');
+        $params['orders'] = $orderHelper->getAllOrders();
         $params['active'] = (@$params['active']) ?: 0;
 
         return parent::render($view, $params, $response);
