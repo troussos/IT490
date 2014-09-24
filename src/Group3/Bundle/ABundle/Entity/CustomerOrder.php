@@ -62,7 +62,7 @@ class CustomerOrder
     /**
      * @ORM\OneToOne(targetEntity="Shipment", mappedBy="order")
      */
-    private $shippment;
+    private $shipment;
 
     /**
      * Get id
@@ -210,9 +210,9 @@ class CustomerOrder
     /**
      * @return mixed
      */
-    public function getShippment()
+    public function getShipment()
     {
-        return $this->shippment;
+        return $this->shipment;
     }
 
     /**
@@ -220,9 +220,9 @@ class CustomerOrder
      *
      * @return CustomerOrder
      */
-    public function setShippment($shippment)
+    public function setShipment($shipment)
     {
-        $this->shippment = $shippment;
+        $this->shipment = $shipment;
         return $this;
     }
 

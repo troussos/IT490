@@ -25,13 +25,15 @@ class CustomerOrderType extends AbstractType
                 'choices'   => array('Preparing' => 'Preparing', 'Shipping' => 'Shipping', 'Delivered' => 'Delivered')
                )
             )
-            /*->add('orderDetails', 'entity',
+            ->add('orderDetails', 'entity',
                   array('class' => 'Group3ABundle:OrderDetail',
+                        'multiple' => true,
+                        'expanded' => true,
                         'query_builder' => function(EntityRepository $er) {
                                 return $er->createQueryBuilder('c');
                             }
                   )
-            )*/
+            )
             ->add('customer', 'entity',
                   array('class' => 'Group3ABundle:Customer',
                         'query_builder' => function(EntityRepository $er) {
