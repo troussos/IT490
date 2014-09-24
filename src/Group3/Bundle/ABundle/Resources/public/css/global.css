@@ -180,6 +180,17 @@ h1.create-header{
 }
 /** End Header Styles **/
 
+/** Table Styles **/
+table{
+    width: 100%;
+}
+table td a{
+    display: block;
+    text-decoration: none;
+    color: #000;
+}
+/** End Table Styles **/
+
 /** Tablet Media Queries **/
 @media (min-width: 40em) {
 

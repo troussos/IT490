@@ -18,9 +18,42 @@
         </div>
 
         <div class="content-body">
-            <p>
-                Here We'll Have a big table of orders where you can head to each one and view what is happening.
-            </p>
+            <table class="pure-table pure-table-striped">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Amount</th>
+                        <th>Number of Items</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in customer.orders %}
+                        <tr>
+                            <td>
+                                <a href="{{ path('orderGet', {id: order.id}) }}">
+                                    {{ order.orderDate | date('m/d/y h:m:s A')}}
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{{ path('orderGet', {id: order.id}) }}">
+                                    {{ order.orderStatus }}
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{{ path('orderGet', {id: order.id}) }}">
+                                    ${{ order.totalAmount |number_format(2, '.', ',') }}
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{{ path('orderGet', {id: order.id}) }}">
+                                    {{ order.orderDetails|length }}
+                                </a>
+                            </td>
+                        </tr>
+                    {%  endfor  %}
+                </tbody>
+            </table>
         </div>
     {% endif %}
 {% endblock %}
