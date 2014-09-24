@@ -29,6 +29,9 @@ class OrderHelper extends BaseEntityService
     public function saveOrder(CustomerOrder $order)
     {
         $this->saveEntity($order);
+        $user = $order->getCustomer();
+        $user->addOrder($order);
+        $this->saveEntity($user);
     }
 
     public function removeOrder($id)

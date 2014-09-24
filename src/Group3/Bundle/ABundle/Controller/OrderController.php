@@ -71,6 +71,7 @@ class OrderController extends Controller
 
         if ($form->isValid()) {
 
+            $order->setTotalAmount(10);
             $orderHelper->saveOrder($order);
 
             $this->get('session')->getFlashBag()->add('success', 'Order Successfully Saved');
@@ -131,7 +132,7 @@ class OrderController extends Controller
 
         return $this->render(
             'Group3ABundle:pages/order:viewOrder.html.twig',
-            array('order' => $order)
+            array('order' => @$order)
         );
     }
 
