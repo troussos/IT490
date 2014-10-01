@@ -28,10 +28,12 @@
             {% endfor %}
         </tbody>
     </table>
+    <br>
+    {{ form_widget(form._token) }}
 
     {{ form_row(form.save) }}
 
-    {{ form_end(form) }}
+    {{ form_end(form, {'render_rest': false}) }}
 {% endblock %}
 
 {% block javascripts %}

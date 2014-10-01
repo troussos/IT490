@@ -1,16 +1,16 @@
 // setup an "add a tag" link
-var $addItemLink = $('<td><a href="#" class="add_tag_link">Add an Item</a></td>');
+var $addItemLink = $('<td><a href="#" class="add_tag_link pure-button add-button">Add an Item</a></td>');
 var $newLinkRow = $('<tr><td></td><td></td></tr>').append($addItemLink);
 
 jQuery(document).ready(function() {
-    // Get the ul that holds the collection of tags
+    // Get the table that holds the collection of items
     var $collectionHolder = $('table');
 
     $collectionHolder.find('tr.item').each(function() {
         addItemFormDeleteLink($(this));
     });
 
-    // add the "add a tag" anchor and li to the tags ul
+    // add the "add an item" anchor
     $collectionHolder.append($newLinkRow);
 
     // count the current form inputs we have (e.g. 2), use that as the new
@@ -28,7 +28,7 @@ jQuery(document).ready(function() {
 
 });
 
-function addItemForm($collectionHolder, $newLinkLi) {
+function addItemForm($collectionHolder, $newLinkRow) {
     // Get the data-prototype explained earlier
     var prototype = $collectionHolder.data('prototype');
 
@@ -51,7 +51,7 @@ function addItemForm($collectionHolder, $newLinkLi) {
 }
 
 function addItemFormDeleteLink($tagFormRow) {
-    var $removeFormA = $('<td><a href="#">Remove this Item</a></td>');
+    var $removeFormA = $('<td><a href="#" class="pure-button delete-button">Remove this Item</a></td>');
     $tagFormRow.append($removeFormA);
 
     $removeFormA.on('click', function(e) {

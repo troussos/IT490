@@ -19,15 +19,31 @@
         </div>
 
         <div class="content-body">
-                <table class="pure-table">
-                    <tr>
-                        <th>Item Name</th>
-                    </tr>
-                    {% for detail in order.orderDetails %}
-                       <tr>
-                           <td>{{detail.item.itemName}}</td>
-                       </tr>
-                    {% endfor %}
+                <table class="pure-table pure-table-striped">
+                    <thead>
+                        <tr>
+                            <th>Item Name</th>
+                            <th>Quantity</th>
+                            <th>Unit Price</th>
+                            <th>Total Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for detail in order.orderDetails %}
+                           <tr>
+                               <td>{{detail.item.itemName}}</td>
+                               <td>{{detail.itemQuantity}}</td>
+                               <td>${{detail.item.price | number_format(2, '.', ',') }}</td>
+                               <td>${{(detail.item.price * detail.itemQuantity) | number_format(2, '.', ',') }}</td>
+                           </tr>
+                        {% endfor %}
+                        <tr>
+                            <td>Total Price</td>
+                            <td></td>
+                            <td></td>
+                            <td>${{ order.totalAmount|number_format(2, '.', ',') }}</td>
+                        </tr>
+                    </tbody>
                 </table>
         </div>
     {% endif %}

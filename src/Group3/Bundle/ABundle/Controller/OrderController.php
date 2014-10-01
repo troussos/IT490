@@ -72,7 +72,13 @@ class OrderController extends Controller
 
         if ($form->isValid()) {
 
-            $order->setTotalAmount(10);
+            $totalPrice = 0;
+            foreach($order->getOrderDetails() as $detail)
+            {
+                $totalPrice += $detail->getItem()->getPrice() * $detail->getItemQuantity();
+            }
+
+            $order->setTotalAmount($totalPrice);
             $orderHelper->saveOrder($order);
 
             $this->get('session')->getFlashBag()->add('success', 'Order Successfully Saved');
