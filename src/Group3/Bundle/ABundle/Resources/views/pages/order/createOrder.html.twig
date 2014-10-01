@@ -6,5 +6,43 @@
     {% else %}
         <h1 class="create-header">Editing Order #{{order.id}}</h1>
     {% endif %}
-    {{ form(form, { 'attr': {'class': 'pure-form pure-form-aligned'}}) }}
+    {{ form_start(form, { 'attr': {'class': 'pure-form pure-form-aligned'}}) }}
+    {{ form_row(form.orderDate) }}
+    {{ form_row(form.orderStatus) }}
+    {{ form_row(form.customer) }}
+
+    <table class="pure-table pure-table-horizontal" data-prototype="{{ _self.item_prototype(form.orderDetails.vars.prototype)|e }}">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Quantity</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in form.orderDetails %}
+                <tr class="item">
+                    <td>{{ form_widget(item.item) }}</td>
+                    <td>{{ form_widget(item.itemQuantity) }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {{ form_row(form.save) }}
+
+    {{ form_end(form) }}
 {% endblock %}
+
+{% block javascripts %}
+    {{parent()}}
+    {% javascripts
+    '@Group3ABundle/Resources/public/js/order-handler.js' %}
+    <script src='{{ asset_url }}' type='text/javascript'></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% macro item_prototype(item) %}
+    <td>{{ form_widget(item.item) }}</td>
+    <td>{{ form_widget(item.itemQuantity) }}</td>
+{% endmacro %}

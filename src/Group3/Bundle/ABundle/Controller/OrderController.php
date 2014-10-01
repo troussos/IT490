@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
 use Group3\Bundle\ABundle\Form\CustomerOrderType;
+use Group3\Bundle\ABundle\Entity\OrderDetail;
 
 class OrderController extends Controller
 {

@@ -24,7 +24,7 @@ class OrderDetail
     /**
      * @var Inventory
      *
-     * @ORM\ManyToOne(targetEntity="Inventory")
+     * @ORM\ManyToOne(targetEntity="Inventory", cascade={"persist"})
      * @ORM\JoinColumn(name="item_id", referencedColumnName="inventory_id")
      */
     private $item;

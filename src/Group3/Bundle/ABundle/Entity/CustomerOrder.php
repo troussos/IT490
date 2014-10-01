@@ -46,7 +46,7 @@ class CustomerOrder
      */
     private $orderStatus;
     /**
-     * @ORM\ManyToMany(targetEntity="OrderDetail")
+     * @ORM\ManyToMany(targetEntity="OrderDetail", cascade={"persist"})
      * @ORM\JoinTable(name="join_orderDetail",
      *      joinColumns={@ORM\JoinColumn(name="order_id", referencedColumnName="customer_order_id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="orderDetail_id", referencedColumnName="order_id", unique=true)}
@@ -185,6 +185,18 @@ class CustomerOrder
     public function setOrderDetails($orderDetails)
     {
         $this->orderDetails = $orderDetails;
+        return $this;
+    }
+
+    public function addOrderDetails($orderDetails)
+    {
+        $this->orderDetails->add($orderDetails);
+        return $this;
+    }
+
+    public function removeOrderDetails($orderDetails)
+    {
+        $this->orderDetails->removeElement($orderDetails);
         return $this;
     }
 

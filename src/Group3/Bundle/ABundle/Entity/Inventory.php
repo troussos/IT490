@@ -158,4 +158,9 @@ class Inventory
     {
         return $this->price;
     }
+
+    public function __toString()
+    {
+        return $this->getItemName();
+    }
 }
