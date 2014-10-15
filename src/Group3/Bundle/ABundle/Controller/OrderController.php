@@ -130,8 +130,12 @@ class OrderController extends Controller
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function getOrderAction($id = 0)
+    public function getOrderAction(Request $request, $id = 0)
     {
+        if($request->query->has('order-id'))
+        {
+            return $this->redirect($this->generateUrl('orderGet', array('id' => $request->query->get('order-id'))));
+        }
         /**
          * @var OrderHelper
          */

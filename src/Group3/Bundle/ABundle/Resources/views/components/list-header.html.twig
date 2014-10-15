@@ -20,11 +20,17 @@
 
 
 {% macro orderHeader() %}
-    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-        <div class="list-item controls">
+    <div class="list-item controls">
+        <div class="pure-control-group">
+            <form class="pure-form pure-form-aligned">
+                <input type="text" placeholder="Order ID" name="order-id"/>
+            </form>
+        </div>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <br>
             <a href="{{path('orderViewCreate')}}" class="add-button pure-button">
                 Create
             </a>
-        </div>
-    {% endif %}
+        {% endif %}
+    </div>
 {% endmacro %}
