@@ -1,5 +1,5 @@
 <?php
-/** @author troussos **/
+/** @author troussos * */
 
 namespace Group3\Bundle\ABundle\Service;
 
@@ -50,5 +50,21 @@ class OrderHelper extends BaseEntityService
         $orders = $this->getAllOfEntity();
 
         return $orders;
+    }
+
+    public function getOrderBetweenDates($startDate, $stopDate)
+    {
+        $startDate = (empty($startDate)) ? new \DateTime('0') : new \DateTime($startDate);
+        $stopDate = (empty($stopDate)) ? new \DateTime() : new \DateTime($stopDate);
+
+        $repository = $this->entityManager->getRepository('Group3ABundle:' . self::$entityName);
+
+        $query      = $repository->createQueryBuilder('p')
+            ->where('p.orderDate BETWEEN :startdate AND :stopdate')
+            ->setParameter('startdate', $startDate->format('Y-m-d'))
+            ->setParameter('stopdate', $stopDate->format('Y-m-d'))
+            ->getQuery();
+
+        return $query->getResult();
     }
 }

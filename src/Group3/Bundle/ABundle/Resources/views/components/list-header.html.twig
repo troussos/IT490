@@ -19,18 +19,27 @@
 {% endmacro %}
 
 
-{% macro orderHeader() %}
+{% macro orderHeader(startDate, stopDate) %}
     <div class="list-item controls">
-        <div class="pure-control-group">
-            <form class="pure-form pure-form-aligned">
+        <form class="pure-form pure-form-aligned">
+            <div class="pure-control-group">
                 <input type="text" placeholder="Filter by Order ID" name="order-id"/>
-            </form>
-        </div>
+            </div>
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <div class="pure-control-group">
+                        <input type="date" placeholder="Filter Start Date" name="start-date" value="{{ startDate }}"/>
+                    </div>
+                    <div class="pure-control-group">
+                        <input type="date" placeholder="Filter Stop Date" name="stop-date" value="{{ stopDate }}"/>
+                    </div>
+                {% endif %}
+                <button class="edit-button pure-button" type="submit">Filter</button>
+        </form>
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-            <br>
             <a href="{{path('orderViewCreate')}}" class="add-button pure-button">
                 Create
             </a>
         {% endif %}
     </div>
+
 {% endmacro %}

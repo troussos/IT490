@@ -1,10 +1,10 @@
 {% extends "Group3ABundle::layout.html.twig" %}
 
 {% block list %}
-    {{ listHeader.orderHeader() }}
+    {{ listHeader.orderHeader(startDate, stopDate) }}
 
     {% for order in orders %}
-        {{ listItem.order(order)}}
+        {{ listItem.order(order, active)}}
     {% endfor %}
 
 {% endblock %}

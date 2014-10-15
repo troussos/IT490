@@ -133,7 +133,7 @@ class ItemController extends Controller
 
         return $this->render(
             'Group3ABundle:pages/item:viewItem.html.twig',
-            array('item' => $item)
+            array('item' => $item, 'active' => $id)
         );
     }
 

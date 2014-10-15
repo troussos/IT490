@@ -4,7 +4,7 @@
     {{ listHeader.itemHeader() }}
 
     {% for item in items %}
-        {{ listItem.item(item)}}
+        {{ listItem.item(item, active)}}
     {% endfor %}
 
 {% endblock %}

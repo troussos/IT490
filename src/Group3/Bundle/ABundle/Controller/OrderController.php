@@ -1,5 +1,5 @@
 <?php
-/** @author troussos **/
+/** @author troussos * */
 
 namespace Group3\Bundle\ABundle\Controller;
 
@@ -29,13 +29,13 @@ class OrderController extends Controller
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function getCreateOrderAction($id = 0)
+    public function getCreateOrderAction(Request $request, $id = 0)
     {
         /**
          * @var OrderHelper
          */
         $orderHelper = $this->get('group3_a.order_helper');
-        $order = $orderHelper->getOrderIfExists($id);
+        $order       = $orderHelper->getOrderIfExists($id);
 
         $form = $this->createForm(new CustomerOrderType(), $order);
 
@@ -43,8 +43,10 @@ class OrderController extends Controller
             'Group3ABundle:pages/order:createOrder.html.twig',
             array(
                 'active' => $id,
-                'form' => $form->createView(),
-                'order' => $order
+                'form'   => $form->createView(),
+                'order'  => $order,
+                'startDate' => $request->query->get('start-date'),
+                'stopDate'  => $request->query->get('stop-date')
             )
         );
     }
@@ -54,7 +56,7 @@ class OrderController extends Controller
      * @Route("/order/{id}/edit", name="orderPostEdit")
      * @Method("POST")
      *
-     * @param $id
+     * @param         $id
      * @param Request $request
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
@@ -65,16 +67,17 @@ class OrderController extends Controller
          * @var OrderHelper
          */
         $orderHelper = $this->get('group3_a.order_helper');
-        $order = $orderHelper->getOrderIfExists($id);
+        $order       = $orderHelper->getOrderIfExists($id);
 
         $form = $this->createForm(new CustomerOrderType(), $order);
 
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
+        if ($form->isValid())
+        {
 
             $totalPrice = 0;
-            foreach($order->getOrderDetails() as $detail)
+            foreach ($order->getOrderDetails() as $detail)
             {
                 $totalPrice += $detail->getItem()->getPrice() * $detail->getItemQuantity();
             }
@@ -85,7 +88,7 @@ class OrderController extends Controller
             $this->get('session')->getFlashBag()->add('success', 'Order Successfully Saved');
 
             return $this->redirect(
-                $this->generateUrl('orderGet', array('id'=>$order->getId()))
+                $this->generateUrl('orderGet', array('id' => $order->getId()))
             );
         }
         $this->get('session')->getFlashBag()->add('warning', 'Error Saving Order');
@@ -94,8 +97,8 @@ class OrderController extends Controller
             'Group3ABundle:pages/order:createOrder.html.twig',
             array(
                 'active' => $id,
-                'form' => $form->createView(),
-                'order' => $order
+                'form'   => $form->createView(),
+                'order'  => $order
             )
         );
     }
@@ -132,19 +135,29 @@ class OrderController extends Controller
      */
     public function getOrderAction(Request $request, $id = 0)
     {
-        if($request->query->has('order-id'))
+        if ($request->query->has('order-id') && !empty($request->query->get('order-id')))
         {
             return $this->redirect($this->generateUrl('orderGet', array('id' => $request->query->get('order-id'))));
         }
+
         /**
          * @var OrderHelper
          */
         $orderHelper = $this->get('group3_a.order_helper');
         $order = $orderHelper->getOrderById($id);
 
+        if (empty($order) && 0 !== $id)
+        {
+            $this->get('session')->getFlashBag()->add('warning', 'No Order could be found with that filter criteria');
+        }
+
         return $this->render(
             'Group3ABundle:pages/order:viewOrder.html.twig',
-            array('order' => @$order)
+            array(
+                'order'      => @$order,
+                'active' => $id,
+                'startDate' => $request->query->get('start-date'),
+                'stopDate'  => $request->query->get('stop-date'))
         );
     }
 
@@ -157,13 +170,24 @@ class OrderController extends Controller
      *
      * @return Response
      */
-    public function render($view, array $params = array(), Response $response = NULL)
+    public function render(
+        $view,
+        array $params = array(),
+        Response $response = NULL
+    )
     {
         /**
          * @var OrderHelper
          */
         $orderHelper      = $this->get('group3_a.order_helper');
-        $params['orders'] = $orderHelper->getAllOrders();
+        if(!empty($params['startDate']) || !empty($params['stopDate']))
+        {
+            $params['orders'] = $orderHelper->getOrderBetweenDates($params['startDate'], $params['stopDate']);
+        }
+        else
+        {
+            $params['orders'] = $orderHelper->getAllOrders();
+        }
         $params['active'] = (@$params['active']) ?: 0;
 
         return parent::render($view, $params, $response);

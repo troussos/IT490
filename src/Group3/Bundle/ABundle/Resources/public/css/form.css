@@ -10,3 +10,7 @@
 .pure-form div.input{
     display: inline-block;
 }
+
+.pure-form{
+    margin-bottom: 10px;
+}
