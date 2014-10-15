@@ -10,11 +10,12 @@
                     {{customer.street}} <span>{{customer.city}}, {{customer.state}} {{customer.zip}}</span> {{customer.country}}
                 </p>
             </div>
-
-            <div class="content-controls pure-u-1-4">
-                <a href="{{path('customerViewEdit', {'id': customer.id})}}" class="edit-button pure-button">Edit</a>
-                <a href="{{path('customerDelete', {'id': customer.id})}}" class="delete-button pure-button">Delete</a>
-            </div>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <div class="content-controls pure-u-1-4">
+                    <a href="{{path('customerViewEdit', {'id': customer.id})}}" class="edit-button pure-button">Edit</a>
+                    <a href="{{path('customerDelete', {'id': customer.id})}}" class="delete-button pure-button">Delete</a>
+                </div>
+            {% endif %}
         </div>
 
         <div class="content-body">

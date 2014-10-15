@@ -29,7 +29,6 @@
                         <li {% if app.request.get('_route') starts with 'customer' %} class="selected"{% endif %}><a href="{{path('customerGet')}}">Customers</a></li>
                         <li {% if app.request.get('_route') starts with 'order' %} class="selected"{% endif %}><a href="{{path('orderGet')}}">Orders</a></li>
                         <li {% if app.request.get('_route') starts with 'item' %} class="selected"{% endif %}><a href="{{path('itemGet')}}">Items</a></li>
-                        <li {% if app.request.get('_route') starts with 'shipment' %} class="selected"{% endif %}><a href="{{path('shipmentGet')}}">Shipments</a></li>
                     </ul>
                 </div>
             </div>

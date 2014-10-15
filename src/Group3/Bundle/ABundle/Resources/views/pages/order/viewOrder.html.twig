@@ -8,14 +8,16 @@
                 <p class="content-subtitle">
                     {{order.orderDate | date('m/d/y h:m:s A')}}<br>
                     <a href="{{path('customerGet', {id: order.customer.id})}}">{{order.customer.firstName}} {{order.customer.lastName}}</a><br>
-                    <span>Status: {{order.orderStatus}}</span>
+                    <span>Shipping Status: {{order.orderStatus}}</span><br>
+                    <span>Invoice Status: {{order.invoice}}</span>
                 </p>
             </div>
-
-            <div class="content-controls pure-u-1-4">
-                <a href="{{path('orderViewEdit', {'id': order.id})}}" class="edit-button pure-button">Edit</a>
-                <a href="{{path('orderDelete', {'id': order.id})}}" class="delete-button pure-button">Delete</a>
-            </div>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <div class="content-controls pure-u-1-4">
+                    <a href="{{path('orderViewEdit', {'id': order.id})}}" class="edit-button pure-button">Edit</a>
+                    <a href="{{path('orderDelete', {'id': order.id})}}" class="delete-button pure-button">Delete</a>
+                </div>
+            {% endif %}
         </div>
 
         <div class="content-body">
@@ -31,10 +33,26 @@
                     <tbody>
                         {% for detail in order.orderDetails %}
                            <tr>
-                               <td>{{detail.item.itemName}}</td>
-                               <td>{{detail.itemQuantity}}</td>
-                               <td>${{detail.item.price | number_format(2, '.', ',') }}</td>
-                               <td>${{(detail.item.price * detail.itemQuantity) | number_format(2, '.', ',') }}</td>
+                               <td>
+                                   <a href="{{ path('itemGet', {id: detail.item.id}) }}">
+                                        {{detail.item.itemName}}
+                                   </a>
+                               </td>
+                               <td>
+                                   <a href="{{ path('itemGet', {id: detail.item.id}) }}">
+                                        {{detail.itemQuantity}}
+                                   </a>
+                               </td>
+                               <td>
+                                   <a href="{{ path('itemGet', {id: detail.item.id}) }}">
+                                        ${{detail.item.price | number_format(2, '.', ',') }}
+                                   </a>
+                               </td>
+                               <td>
+                                   <a href="{{ path('itemGet', {id: detail.item.id}) }}">
+                                        ${{(detail.item.price * detail.itemQuantity) | number_format(2, '.', ',') }}
+                                   </a>
+                               </td>
                            </tr>
                         {% endfor %}
                         <tr>

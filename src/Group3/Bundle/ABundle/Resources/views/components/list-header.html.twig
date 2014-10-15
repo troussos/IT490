@@ -1,24 +1,30 @@
 {% macro customerHeader() %}
-    <div class="list-item controls">
-        <a href="{{path('customerViewCreate')}}" class="add-button pure-button">
-            Create
-        </a>
-    </div>
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <div class="list-item controls">
+            <a href="{{path('customerViewCreate')}}" class="add-button pure-button">
+                Create
+            </a>
+        </div>
+    {% endif %}
 {% endmacro %}
 
 {% macro itemHeader() %}
-    <div class="list-item controls">
-        <a href="{{path('itemViewCreate')}}" class="add-button pure-button">
-            Create
-        </a>
-    </div>
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <div class="list-item controls">
+            <a href="{{path('itemViewCreate')}}" class="add-button pure-button">
+                Create
+            </a>
+        </div>
+    {% endif %}
 {% endmacro %}
 
 
 {% macro orderHeader() %}
-    <div class="list-item controls">
-        <a href="{{path('orderViewCreate')}}" class="add-button pure-button">
-            Create
-        </a>
-    </div>
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <div class="list-item controls">
+            <a href="{{path('orderViewCreate')}}" class="add-button pure-button">
+                Create
+            </a>
+        </div>
+    {% endif %}
 {% endmacro %}

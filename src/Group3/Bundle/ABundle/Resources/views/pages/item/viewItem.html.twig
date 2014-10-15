@@ -6,20 +6,20 @@
             <div class="pure-u-3-4">
                 <h1 class="content-title">{{item.itemName}}</h1>
                 <p class="content-subtitle">
-                    <span>{{item.itemDescription}}</span><br>
                     Quantity: {{item.quantityInStock}} Price: ${{item.price |number_format(2, '.', ',') }}
                 </p>
             </div>
-
-            <div class="content-controls pure-u-1-4">
-                <a href="{{path('itemViewEdit', {'id': item.id})}}" class="edit-button pure-button">Edit</a>
-                <a href="{{path('itemDelete', {'id': item.id})}}" class="delete-button pure-button">Delete</a>
-            </div>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <div class="content-controls pure-u-1-4">
+                    <a href="{{path('itemViewEdit', {'id': item.id})}}" class="edit-button pure-button">Edit</a>
+                    <a href="{{path('itemDelete', {'id': item.id})}}" class="delete-button pure-button">Delete</a>
+                </div>
+            {% endif %}
         </div>
 
         <div class="content-body">
             <p>
-                Here We'll Have a big table of orders where you can see what orders have this item in it (MAYBE)
+                {{item.itemDescription}}
             </p>
         </div>
     {% endif %}
