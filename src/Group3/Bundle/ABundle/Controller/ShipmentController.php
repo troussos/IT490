@@ -22,6 +22,7 @@ class ShipmentController extends Controller
     public function getShipmentAction($id = 0)
     {
         //TODO - Look up entities from the DB here and return a nicely formatted array
+        //TODO - Maybe move the Shippment information back into the Order Object?
         return $this->render('Group3ABundle:pages:shipment.html.twig');
     }
 

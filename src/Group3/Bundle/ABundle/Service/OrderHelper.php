@@ -6,6 +6,7 @@ namespace Group3\Bundle\ABundle\Service;
 
 use Doctrine\ORM\EntityManager;
 use Group3\Bundle\ABundle\Entity\CustomerOrder;
+use Group3\Bundle\ABundle\Entity\Invoice;
 
 class OrderHelper extends BaseEntityService
 {
@@ -50,4 +51,4 @@ class OrderHelper extends BaseEntityService
 
         return $orders;
     }
-} 
+}

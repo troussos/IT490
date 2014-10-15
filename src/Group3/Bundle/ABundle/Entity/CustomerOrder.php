@@ -46,7 +46,7 @@ class CustomerOrder
      */
     private $orderStatus;
     /**
-     * @ORM\ManyToMany(targetEntity="OrderDetail", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="OrderDetail", cascade={"all"})
      * @ORM\JoinTable(name="join_orderDetail",
      *      joinColumns={@ORM\JoinColumn(name="order_id", referencedColumnName="customer_order_id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="orderDetail_id", referencedColumnName="order_id", unique=true)}
@@ -56,7 +56,7 @@ class CustomerOrder
     /**
      * @var Invoice
      *
-     * @ORM\OneToOne(targetEntity="Invoice", mappedBy="order")
+     * @ORM\Column(name="invoice", type="string", length=255)
      **/
     private $invoice;
     /**

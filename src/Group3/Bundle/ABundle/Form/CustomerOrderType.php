@@ -3,6 +3,7 @@
 namespace Group3\Bundle\ABundle\Form;
 
 use Group3\Bundle\ABundle\Entity\Inventory;
+use Group3\Bundle\ABundle\Entity\Invoice;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -36,6 +37,10 @@ class CustomerOrderType extends AbstractType
                         'query_builder' => function(EntityRepository $er) {
                             return $er->createQueryBuilder('c');
                         }
+                )
+            )
+            ->add('invoice', 'choice',
+                  array('choices'   => array('Billed' => 'Billed', 'Paid' => 'Paid', 'Past Due' => 'Past Due')
                 )
             )
             ->add('save', 'submit', array(

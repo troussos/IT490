@@ -3,6 +3,7 @@
 
 namespace Group3\Bundle\ABundle\Controller;
 
+use Group3\Bundle\ABundle\Entity\Invoice;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
