@@ -33,7 +33,7 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [Group3ABundle]
+    bundles:        [Group3ABundle, FOSUserBundle]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -72,3 +72,8 @@ sp_bower:
     bundles:
         Group3ABundle: ~
     install_on_warmup: true
+
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: Group3\Bundle\ABundle\Entity\Admin

@@ -1,26 +1,22 @@
 {% extends "base.html.twig" %}
-{% import "Group3ABundle:components:list-item.html.twig" as listItem %}
-{% import "Group3ABundle:components:list-header.html.twig" as listHeader %}
 
 {% block stylesheets %}
     {{parent()}}
     {% stylesheets filter='cssrewrite'
-        "@Group3ABundle/Resources/public/css/global.css"
-        "@Group3ABundle/Resources/public/css/alert-bar.css"
-        "@Group3ABundle/Resources/public/css/form.css"
+    "@Group3ABundle/Resources/public/css/global.css"
+    "@Group3ABundle/Resources/public/css/alert-bar.css"
+    "@Group3ABundle/Resources/public/css/form.css"
     %}
     <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen"/>
     {% endstylesheets %}
 {% endblock %}
 
 {% block body %}
-    {% for label, flashes in app.session.flashbag.all %}
+    {% if error %}
         <div id="alert">
-            {% for flash in flashes %}
-                <a class="alert alert-{{ label }}" href="#alert">{{ flash }}</a>
-            {% endfor %}
+            <a class="alert alert-failure" href="#alert">{{ error.message }}</a>
         </div>
-    {% endfor %}
+    {% endif %}
 
     <div id="layout" class="content pure-g">
         <nav id="nav" class="pure-u">
@@ -36,30 +32,31 @@
                         <li {% if app.request.get('_route') starts with 'shipment' %} class="selected"{% endif %}><a href="{{path('shipmentGet')}}">Shipments</a></li>
                     </ul>
                 </div>
-                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <a href="{{ url('fos_user_security_logout') }}" class="delete-button pure-button">Logout</a
-                {% else %}
-                    <a href="{{ url('fos_user_security_login') }}" class="pure-button pure-button-primary save-button">Login</a>>
-                {% endif %}
             </div>
         </nav>
 
-        <div id="list" class="pure-u-1">
-            {% block list %}
-            {% endblock %}
-        </div>
-
-
         <div id="main" class="pure-u-1">
             <div class="content">
-                {% block content %}
+                <h1 class="create-header">Administrator Login</h1>
+                <form class="pure-form pure-form-aligned" action="{{ url('fos_user_security_check') }}" method="POST">
+                    <fieldset>
+                        <div class="pure-control-group">
+                            <label for="username">Username</label>
+                            <input id="username" type="text" name="_username" placeholder="Enter Username">
+                        </div>
 
-                {% endblock %}
+                        <div class="pure-control-group">
+                            <label for="password">Password</label>
+                            <input id="password" type="password" name="_password" placeholder="Enter Password">
+                        </div>
+
+                        <button type="submit" class="pure-button pure-button-primary save-button">Login</button>
+                    </fieldset>
+                </form>
             </div>
         </div>
     </div>
 {% endblock %}
-
 
 {% block javascripts %}
     {{parent()}}
