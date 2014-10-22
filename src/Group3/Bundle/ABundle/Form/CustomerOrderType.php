@@ -43,6 +43,10 @@ class CustomerOrderType extends AbstractType
                   array('choices'   => array('Billed' => 'Billed', 'Paid' => 'Paid', 'Past Due' => 'Past Due')
                 )
             )
+            ->add('shipment', 'choice',
+                  array('choices'   => array('Preparing' => 'Preparing', 'In Transit' => 'In Transit', 'Out for Delivery' => 'Out for Delivery', 'Delivered' => 'Delivered')
+                  )
+            )
             ->add('save', 'submit', array(
                 'attr' => array('class' => 'pure-button pure-button-primary save-button')
             )

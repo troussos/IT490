@@ -60,7 +60,7 @@ class CustomerOrder
      **/
     private $invoice;
     /**
-     * @ORM\OneToOne(targetEntity="Shipment", mappedBy="order")
+     * @ORM\Column(name="shipment", type="string", length=255)
      */
     private $shipment;
 
@@ -228,7 +228,7 @@ class CustomerOrder
     }
 
     /**
-     * @param mixed $shippment
+     * @param string $shipment
      *
      * @return CustomerOrder
      */
@@ -237,5 +237,4 @@ class CustomerOrder
         $this->shipment = $shipment;
         return $this;
     }
-
 }

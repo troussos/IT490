@@ -9,7 +9,8 @@
                     {{order.orderDate | date('m/d/y h:m:s A')}}<br>
                     <a href="{{path('customerGet', {id: order.customer.id})}}">{{order.customer.firstName}} {{order.customer.lastName}}</a><br>
                     <span>Order Status: {{order.orderStatus}}</span><br>
-                    <span>Invoice Status: {{order.invoice}}</span>
+                    <span>Invoice ID: </span>{{ order.id }}<span>&nbsp;Status: </span>{{order.invoice}}<br>
+                    <span>Shipment ID: </span>{{ order.id }}<span>&nbsp;Status: </span>{{ order.shipment }}
                 </p>
             </div>
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
