@@ -6,7 +6,7 @@
             <div class="pure-u-3-4">
                 <h1 class="content-title">Order #{{order.id}}</h1>
                 <p class="content-subtitle">
-                    {{order.orderDate | date('m/d/y h:m:s A')}}<br>
+                    {{order.orderDate | date('m/d/y h:I:s A')}}<br>
                     <a href="{{path('customerGet', {id: order.customer.id})}}">{{order.customer.firstName}} {{order.customer.lastName}}</a><br>
                     <span>Order Status: {{order.orderStatus}}</span><br>
                     <span>Invoice ID: </span>{{ order.id }}<span>&nbsp;Status: </span>{{order.invoice}}<br>
