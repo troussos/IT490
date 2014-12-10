@@ -5,23 +5,31 @@ parameters:
   aircraft.class: Group3\Bundle\ABundle\Service\AircraftHelper
   airport.class: Group3\Bundle\ABundle\Service\AirportHelper
   aircrew.class: Group3\Bundle\ABundle\Service\AircrewHelper
+  cargo.class:   Group3\Bundle\ABundle\Service\CargoHelper
+  flight.class:  Group3\Bundle\ABundle\Service\FlightHelper
 
 services:
   group3_a.customer_helper:
     class: %customer.class%
     arguments: [@doctrine.orm.default_entity_manager  ]
   group3_a.item_helper:
-      class: %item.class%
-      arguments: [@doctrine.orm.default_entity_manager  ]
+    class: %item.class%
+    arguments: [@doctrine.orm.default_entity_manager  ]
   group3_a.order_helper:
-      class: %order.class%
-      arguments: [@doctrine.orm.default_entity_manager  ]
+    class: %order.class%
+    arguments: [@doctrine.orm.default_entity_manager  ]
   group3_a.aircraft_helper:
-        class: %aircraft.class%
-        arguments: [@doctrine.orm.default_entity_manager  ]
+    class: %aircraft.class%
+    arguments: [@doctrine.orm.default_entity_manager  ]
   group3_a.airport_helper:
-          class: %airport.class%
-          arguments: [@doctrine.orm.default_entity_manager  ]
+    class: %airport.class%
+    arguments: [@doctrine.orm.default_entity_manager  ]
   group3_a.aircrew_helper:
-            class: %aircrew.class%
-            arguments: [@doctrine.orm.default_entity_manager  ]
+    class: %aircrew.class%
+    arguments: [@doctrine.orm.default_entity_manager  ]
+  group3_a.cargo_helper:
+    class: %cargo.class%
+    arguments: [@doctrine.orm.default_entity_manager  ]
+  group3_a.flight_helper:
+    class: %flight.class%
+    arguments: [@doctrine.orm.default_entity_manager  ]

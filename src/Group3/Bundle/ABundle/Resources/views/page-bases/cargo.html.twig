@@ -1,0 +1,10 @@
+{% extends "Group3ABundle::layout.html.twig" %}
+
+{% block list %}
+    {{ listHeader.cargoHeader() }}
+
+    {% for cargo in cargos %}
+        {{ listItem.cargo(cargo, active)}}
+    {% endfor %}
+
+{% endblock %}

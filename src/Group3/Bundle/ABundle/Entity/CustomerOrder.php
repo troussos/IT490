@@ -237,4 +237,9 @@ class CustomerOrder
         $this->shipment = $shipment;
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->getId() . ' - ' . $this->customer->getLastName();
+    }
 }

@@ -1,0 +1,10 @@
+{% extends "Group3ABundle::layout.html.twig" %}
+
+{% block list %}
+    {{ listHeader.flightHeader() }}
+
+    {% for flight in flights %}
+        {{ listItem.flight(flight, active)}}
+    {% endfor %}
+
+{% endblock %}

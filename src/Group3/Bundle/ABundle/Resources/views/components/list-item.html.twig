@@ -100,3 +100,20 @@
             </a>
         </div>
 {% endmacro %}
+
+{% macro cargo(cargo, active) %}
+    {% if cargo.id == active %}
+    <div class="list-item pure-g selected">
+        {% else %}
+        <div class="list-item pure-g">
+            {% endif %}
+            <a href="{{path('cargoGet', {'id': cargo.id})}}">
+                <div class="pure-u">
+                    <h5 class="name">{{cargo.id}}</h5>
+                    <p class="desc">
+                        {{ cargo.contents }}
+                    </p>
+                </div>
+            </a>
+        </div>
+{% endmacro %}

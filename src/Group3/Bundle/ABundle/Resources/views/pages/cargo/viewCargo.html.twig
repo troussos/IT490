@@ -1,0 +1,23 @@
+{% extends "Group3ABundle:page-bases:cargo.html.twig" %}
+
+{% block content %}
+    {% if cargo is not null %}
+        <div class="content-header pure-g">
+            <div class="pure-u-3-4">
+                <h1 class="content-title">{{cargo.id}}</h1>
+                <p class="content-subtitle">
+                     <span>{{ cargo.contents }}</span>
+                </p>
+            </div>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <div class="content-controls pure-u-1-4">
+                    <a href="{{path('cargoViewEdit', {'id': cargo.id})}}" class="edit-button pure-button">Edit</a>
+                    <a href="{{path('cargoDelete', {'id': cargo.id})}}" class="delete-button pure-button">Delete</a>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="content-body">
+        </div>
+    {% endif %}
+{% endblock %}

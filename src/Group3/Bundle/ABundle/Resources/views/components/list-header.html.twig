@@ -49,6 +49,26 @@
     {% endif %}
 {% endmacro %}
 
+{% macro flightHeader() %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <div class="list-item controls">
+            <a href="{{path('flightViewCreate')}}" class="add-button pure-button">
+                Create
+            </a>
+        </div>
+    {% endif %}
+{% endmacro %}
+
+{% macro cargoHeader() %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <div class="list-item controls">
+            <a href="{{path('cargoViewCreate')}}" class="add-button pure-button">
+                Create
+            </a>
+        </div>
+    {% endif %}
+{% endmacro %}
+
 {% macro orderHeader(startDate, stopDate) %}
     <div class="list-item controls">
         <form class="pure-form pure-form-aligned">
