@@ -33,6 +33,11 @@
                         <li {% if app.request.get('_route') starts with 'customer' %} class="selected"{% endif %}><a href="{{path('customerGet')}}">Customers</a></li>
                         <li {% if app.request.get('_route') starts with 'order' %} class="selected"{% endif %}><a href="{{path('orderGet')}}">Orders</a></li>
                         <li {% if app.request.get('_route') starts with 'item' %} class="selected"{% endif %}><a href="{{path('itemGet')}}">Items</a></li>
+                        <li {% if app.request.get('_route') starts with 'aircraft' %} class="selected"{% endif %}><a href="{{path('aircraftGet')}}">Aircraft</a></li>
+                        <li {% if app.request.get('_route') starts with 'airports' %} class="selected"{% endif %}><a href="{{path('airportGet')}}">Airports</a></li>
+                        <li {% if app.request.get('_route') starts with 'aircrew' %} class="selected"{% endif %}><a href="{{path('aircrewGet')}}">Aircrew</a></li>
+                        <li {% if app.request.get('_route') starts with 'cargo' %} class="selected"{% endif %}><a href="{{path('cargoGet')}}">Cargo</a></li>
+                        <li {% if app.request.get('_route') starts with 'flights' %} class="selected"{% endif %}><a href="{{path('flightGet')}}">Flights</a></li>
                     </ul>
                 </div>
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}

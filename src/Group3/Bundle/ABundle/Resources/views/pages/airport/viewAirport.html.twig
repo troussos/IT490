@@ -1,0 +1,23 @@
+{% extends "Group3ABundle:page-bases:airport.html.twig" %}
+
+{% block content %}
+    {% if airport is not null %}
+        <div class="content-header pure-g">
+            <div class="pure-u-3-4">
+                <h1 class="content-title">{{airport.name}}</h1>
+                <p class="content-subtitle">
+                     <span>{{airport.code}}</span>
+                </p>
+            </div>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <div class="content-controls pure-u-1-4">
+                    <a href="{{path('airportViewEdit', {'id': airport.id})}}" class="edit-button pure-button">Edit</a>
+                    <a href="{{path('airportDelete', {'id': airport.id})}}" class="delete-button pure-button">Delete</a>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="content-body">
+        </div>
+    {% endif %}
+{% endblock %}

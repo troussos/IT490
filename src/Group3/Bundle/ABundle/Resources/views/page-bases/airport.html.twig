@@ -1,0 +1,10 @@
+{% extends "Group3ABundle::layout.html.twig" %}
+
+{% block list %}
+    {{ listHeader.airportHeader() }}
+
+    {% for airport in airports %}
+        {{ listItem.airport(airport, active)}}
+    {% endfor %}
+
+{% endblock %}

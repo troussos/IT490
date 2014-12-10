@@ -48,3 +48,55 @@
         </a>
     </div>
 {% endmacro %}
+
+{% macro aircraft(aircraft, active) %}
+    {% if aircraft.id == active %}
+    <div class="list-item pure-g selected">
+    {% else %}
+    <div class="list-item pure-g">
+        {% endif %}
+        <a href="{{path('aircraftGet', {'id': aircraft.id})}}">
+            <div class="pure-u">
+                <h5 class="name">{{aircraft.tailNumber}}</h5>
+                <p class="desc">
+                    {{aircraft.type}}
+                    {{aircraft.fuelQuantity}}
+                </p>
+            </div>
+        </a>
+    </div>
+{% endmacro %}
+
+{% macro airport(airport, active) %}
+    {% if airport.id == active %}
+    <div class="list-item pure-g selected">
+        {% else %}
+        <div class="list-item pure-g">
+            {% endif %}
+            <a href="{{path('airportGet', {'id': airport.id})}}">
+                <div class="pure-u">
+                    <h5 class="name">{{airport.name}}</h5>
+                    <p class="desc">
+                        {{airport.code}}
+                    </p>
+                </div>
+            </a>
+        </div>
+{% endmacro %}
+
+{% macro aircrew(aircrew, active) %}
+    {% if aircrew.id == active %}
+    <div class="list-item pure-g selected">
+        {% else %}
+        <div class="list-item pure-g">
+            {% endif %}
+            <a href="{{path('aircrewGet', {'id': aircrew.id})}}">
+                <div class="pure-u">
+                    <h5 class="name">{{aircrew.id}}</h5>
+                    <p class="desc">
+                        {{aircrew.pilot}}
+                    </p>
+                </div>
+            </a>
+        </div>
+{% endmacro %}

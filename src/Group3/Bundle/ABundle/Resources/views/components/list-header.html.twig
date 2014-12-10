@@ -18,6 +18,36 @@
     {% endif %}
 {% endmacro %}
 
+{% macro aircraftHeader() %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <div class="list-item controls">
+            <a href="{{path('aircraftViewCreate')}}" class="add-button pure-button">
+                Create
+            </a>
+        </div>
+    {% endif %}
+{% endmacro %}
+
+{% macro airportHeader() %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <div class="list-item controls">
+            <a href="{{path('airportViewCreate')}}" class="add-button pure-button">
+                Create
+            </a>
+        </div>
+    {% endif %}
+{% endmacro %}
+
+
+{% macro aircrewHeader() %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <div class="list-item controls">
+            <a href="{{path('aircrewViewCreate')}}" class="add-button pure-button">
+                Create
+            </a>
+        </div>
+    {% endif %}
+{% endmacro %}
 
 {% macro orderHeader(startDate, stopDate) %}
     <div class="list-item controls">

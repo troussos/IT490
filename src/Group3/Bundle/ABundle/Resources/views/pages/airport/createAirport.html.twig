@@ -1,0 +1,10 @@
+{% extends "Group3ABundle:page-bases:airport.html.twig" %}
+{% form_theme form 'Group3ABundle:forms:fields.html.twig' %}
+{% block content %}
+    {% if active == 0 %}
+        <h1 class="create-header">Create a New Airport</h1>
+    {% else %}
+        <h1 class="create-header">Editing {{airport.name}} ({{ airport.code }}) </h1>
+    {% endif %}
+    {{ form(form, { 'attr': {'class': 'pure-form pure-form-aligned'}}) }}
+{% endblock %}

@@ -2,6 +2,9 @@ parameters:
   customer.class: Group3\Bundle\ABundle\Service\CustomerHelper
   item.class:     Group3\Bundle\ABundle\Service\ItemHelper
   order.class:    Group3\Bundle\ABundle\Service\OrderHelper
+  aircraft.class: Group3\Bundle\ABundle\Service\AircraftHelper
+  airport.class: Group3\Bundle\ABundle\Service\AirportHelper
+  aircrew.class: Group3\Bundle\ABundle\Service\AircrewHelper
 
 services:
   group3_a.customer_helper:
@@ -13,3 +16,12 @@ services:
   group3_a.order_helper:
       class: %order.class%
       arguments: [@doctrine.orm.default_entity_manager  ]
+  group3_a.aircraft_helper:
+        class: %aircraft.class%
+        arguments: [@doctrine.orm.default_entity_manager  ]
+  group3_a.airport_helper:
+          class: %airport.class%
+          arguments: [@doctrine.orm.default_entity_manager  ]
+  group3_a.aircrew_helper:
+            class: %aircrew.class%
+            arguments: [@doctrine.orm.default_entity_manager  ]
