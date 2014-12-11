@@ -35,6 +35,11 @@ class Aircrew
      */
     private $navigator;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Flight", mappedBy="crew", cascade={"persist","remove"})
+     */
+    private $flights;
+
 
     /**
      * Get id
@@ -90,5 +95,29 @@ class Aircrew
     public function getNavigator()
     {
         return $this->navigator;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFlights()
+    {
+        return $this->flights;
+    }
+
+    /**
+     * @param mixed $flights
+     */
+    public function setFlights($flights)
+    {
+        $this->flights = $flights;
+        return $this;
+    }
+
+
+
+    public function __toString()
+    {
+        return $this->getId() . ' - ' . $this->getPilot();
     }
 }

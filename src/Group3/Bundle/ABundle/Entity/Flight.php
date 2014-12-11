@@ -31,25 +31,25 @@ class Flight
     /**
      * @var Aircraft
      *
-     * @ORM\ManyToOne(targetEntity="Aircraft")
+     * @ORM\ManyToOne(targetEntity="Aircraft", inversedBy="flights")
      * @ORM\JoinColumn(name="aircraft_id", referencedColumnName="id")
      */
     private $aircraft;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Aircrew")
+     * @ORM\ManyToOne(targetEntity="Aircrew", inversedBy="flights"))
      * @ORM\JoinColumn(name="aircrew_id", referencedColumnName="id")
      */
     private $crew;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Airport")
+     * @ORM\ManyToOne(targetEntity="Airport", inversedBy="departFlights"))
      * @ORM\JoinColumn(name="depatAirport_id", referencedColumnName="id")
      */
     private $departAirport;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Airport")
+     * @ORM\ManyToOne(targetEntity="Airport", inversedBy="arrivalFlights"))
      * @ORM\JoinColumn(name="arrivalAirport_id", referencedColumnName="id")
      */
     private $arrivalAirport;
@@ -69,11 +69,12 @@ class Flight
     private $arrivalTime;
 
     /**
-     * @var \stdClass
-     *
-     * @ORM\ManyToOne(targetEntity="Cargo")
-     * @ORM\JoinColumn(name="cargo_id", referencedColumnName="id")
-     */
+     * @ORM\ManyToMany(targetEntity="Cargo")
+     * @ORM\JoinTable(name="join_flightCargo",
+     *      joinColumns={@ORM\JoinColumn(name="cargo_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="flight_id", referencedColumnName="id", unique=true)}
+     *      )
+     **/
     private $cargo;
 
 

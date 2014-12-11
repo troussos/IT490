@@ -65,6 +65,11 @@ class CustomerOrder
     private $shipment;
 
     /**
+     * @ORM\OneToOne(targetEntity="Cargo", mappedBy="skidId", cascade={"persist","remove"})
+     */
+    private $cargo;
+
+    /**
      * Get id
      *
      * @return integer
@@ -235,6 +240,23 @@ class CustomerOrder
     public function setShipment($shipment)
     {
         $this->shipment = $shipment;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCargo()
+    {
+        return $this->cargo;
+    }
+
+    /**
+     * @param mixed $cargo
+     */
+    public function setCargo($cargo)
+    {
+        $this->cargo = $cargo;
         return $this;
     }
 

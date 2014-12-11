@@ -18,6 +18,48 @@
         </div>
 
         <div class="content-body">
+            <table class="pure-table pure-table-striped">
+                <thead>
+                <tr>
+                    <th>Flight Number</th>
+                    <th>Departure Date</th>
+                    <th>Departure Airport</th>
+                    <th>Arrival Date</th>
+                    <th>Arrival Airport</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for flight in aircraft.flights %}
+                    <tr>
+                        <td>
+                            <a href="{{ path('flightGet', {id: flight.id}) }}">
+                                {{ flight.flightNumber }}
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{ path('flightGet', {id: flight.id}) }}">
+                                {{ flight.departTime | date('m/d/y h:i:s A')}}
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{ path('flightGet', {id: flight.id}) }}">
+                                {{ flight.departAirport }}
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{ path('flightGet', {id: flight.id}) }}">
+                                {{ flight.arrivalTime| date('m/d/y h:i:s A')}}
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{ path('flightGet', {id: flight.id}) }}">
+                                {{ flight.arrivalAirport }}
+                            </a>
+                        </td>
+                    </tr>
+                {%  endfor  %}
+                </tbody>
+            </table>
         </div>
     {% endif %}
 {% endblock %}

@@ -41,7 +41,6 @@ class Cargo
      */
     private $contents;
 
-
     /**
      * Get id
      *
@@ -119,5 +118,27 @@ class Cargo
     public function getContents()
     {
         return $this->contents;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFlight()
+    {
+        return $this->flight;
+    }
+
+    /**
+     * @param mixed $flight
+     */
+    public function setFlight($flight)
+    {
+        $this->flight = $flight;
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return (string)$this->getId();
     }
 }

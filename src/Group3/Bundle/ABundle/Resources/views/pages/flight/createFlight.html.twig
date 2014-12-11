@@ -1,0 +1,10 @@
+{% extends "Group3ABundle:page-bases:flight.html.twig" %}
+{% form_theme form 'Group3ABundle:forms:fields.html.twig' %}
+{% block content %}
+    {% if active == 0 %}
+        <h1 class="create-header">Create a New Flight</h1>
+    {% else %}
+        <h1 class="create-header">Editing {{flight.id}} </h1>
+    {% endif %}
+    {{ form(form, { 'attr': {'class': 'pure-form pure-form-aligned'}}) }}
+{% endblock %}

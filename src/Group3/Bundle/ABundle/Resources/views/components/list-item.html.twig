@@ -60,7 +60,6 @@
                 <h5 class="name">{{aircraft.tailNumber}}</h5>
                 <p class="desc">
                     {{aircraft.type}}
-                    {{aircraft.fuelQuantity}}
                 </p>
             </div>
         </a>
@@ -112,6 +111,22 @@
                     <h5 class="name">{{cargo.id}}</h5>
                     <p class="desc">
                         {{ cargo.contents }}
+                    </p>
+                </div>
+            </a>
+        </div>
+{% endmacro %}
+
+{% macro flight(flight, active) %}
+    {% if flight.id == active %}
+    <div class="list-item pure-g selected">
+        {% else %}
+        <div class="list-item pure-g">
+            {% endif %}
+            <a href="{{path('flightGet', {'id': flight.id})}}">
+                <div class="pure-u">
+                    <h5 class="name">{{flight.flightNumber}}</h5>
+                    <p class="desc">
                     </p>
                 </div>
             </a>

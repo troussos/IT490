@@ -117,7 +117,7 @@ class CargoController extends Controller
         $cargoHelper = $this->get('group3_a.cargo_helper');
         $cargo = $cargoHelper->getCargoById($id);
 
-        return $this->render(
+            return $this->render(
             'Group3ABundle:pages/cargo:viewCargo.html.twig',
             array('active' => $id, 'cargo' => @$cargo)
         );

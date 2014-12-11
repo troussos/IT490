@@ -35,6 +35,16 @@ class Airport
      */
     private $name;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Flight", mappedBy="departAirport", cascade={"persist","remove"})
+     */
+    private $departFlights;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Flight", mappedBy="arrivalAirport", cascade={"persist","remove"})
+     */
+    private $arrivalFlights;
+
 
     /**
      * Get id
@@ -90,5 +100,44 @@ class Airport
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getArrivalFlights()
+    {
+        return $this->arrivalFlights;
+    }
+
+    /**
+     * @param mixed $arrivalFlights
+     */
+    public function setArrivalFlights($arrivalFlights)
+    {
+        $this->arrivalFlights = $arrivalFlights;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDepartFlights()
+    {
+        return $this->departFlights;
+    }
+
+    /**
+     * @param mixed $departFlights
+     */
+    public function setDepartFlights($departFlights)
+    {
+        $this->departFlights = $departFlights;
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getCode();
     }
 }

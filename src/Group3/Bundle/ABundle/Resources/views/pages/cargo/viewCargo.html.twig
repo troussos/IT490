@@ -18,6 +18,29 @@
         </div>
 
         <div class="content-body">
+            <h2>Orders</h2>
+            <table class="pure-table pure-table-striped">
+                <thead>
+                <tr>
+                    <th>Skid Id</th>
+                    <th>Customer</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <a href="{{ path('orderGet', {id: cargo.skidId.id}) }}">
+                                {{ cargo.skidId.id }}
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{ path('orderGet', {id: cargo.skidId.id}) }}">
+                                {{ cargo.skidId.customer }}
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     {% endif %}
 {% endblock %}

@@ -42,6 +42,11 @@ class Aircraft
      */
     private $fuelQuantity;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Flight", mappedBy="aircraft", cascade={"persist","remove"})
+     */
+    private $flights;
+
 
     /**
      * Get id
@@ -120,5 +125,27 @@ class Aircraft
     public function getFuelQuantity()
     {
         return $this->fuelQuantity;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFlights()
+    {
+        return $this->flights;
+    }
+
+    /**
+     * @param mixed $flights
+     */
+    public function setFlights($flights)
+    {
+        $this->flights = $flights;
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getTailNumber();
     }
 }

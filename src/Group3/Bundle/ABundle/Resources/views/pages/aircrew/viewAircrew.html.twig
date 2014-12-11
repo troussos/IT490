@@ -19,6 +19,61 @@
         </div>
 
         <div class="content-body">
+            <h2>Flights</h2>
+            <table class="pure-table pure-table-striped">
+                <thead>
+                <tr>
+                    <th>Flight Number</th>
+                    <th>Departure Date</th>
+                    <th>Departure Airport</th>
+                    <th>Arrival Date</th>
+                    <th>Arrival Airport</th>
+                    <th>Aircraft Tail Number</th>
+                    <th>Aircraft Type</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for flight in aircrew.flights %}
+                    <tr>
+                        <td>
+                            <a href="{{ path('flightGet', {id: flight.id}) }}">
+                                {{ flight.flightNumber }}
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{ path('flightGet', {id: flight.id}) }}">
+                                {{ flight.departTime | date('m/d/y h:i:s A')}}
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{ path('flightGet', {id: flight.id}) }}">
+                                {{ flight.departAirport }}
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{ path('flightGet', {id: flight.id}) }}">
+                                {{ flight.arrivalTime| date('m/d/y h:i:s A')}}
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{ path('flightGet', {id: flight.id}) }}">
+                                {{ flight.arrivalAirport }}
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{ path('flightGet', {id: flight.id}) }}">
+                                {{ flight.aircraft.tailNumber }}
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{ path('flightGet', {id: flight.id}) }}">
+                                {{ flight.aircraft.type }}
+                            </a>
+                        </td>
+                    </tr>
+                {%  endfor  %}
+                </tbody>
+            </table>
         </div>
     {% endif %}
 {% endblock %}

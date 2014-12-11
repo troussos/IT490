@@ -1,0 +1,101 @@
+{% extends "Group3ABundle:page-bases:flight.html.twig" %}
+
+{% block content %}
+    {% if flight is not null %}
+        <div class="content-header pure-g">
+            <div class="pure-u-3-4">
+                <h1 class="content-title">Flight Number: {{ flight.flightNumber }}</h1>
+                <p class="content-subtitle">
+                </p>
+            </div>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <div class="content-controls pure-u-1-4">
+                    <a href="{{path('flightViewEdit', {'id': flight.id})}}" class="edit-button pure-button">Edit</a>
+                    <a href="{{path('flightDelete', {'id': flight.id})}}" class="delete-button pure-button">Delete</a>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="content-body">
+            <table class="pure-table pure-table-striped">
+                <tbody>
+                    <tr>
+                        <td>
+                            Aircraft Tail Number
+                        </td>
+                        <td>
+                            {{ flight.aircraft.tailNumber }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Aircraft Type
+                        </td>
+                        <td>
+                            {{ flight.aircraft.type }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Aircrew Pilot
+                        </td>
+                        <td>
+                            {{ flight.crew.pilot}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Aircrew Navigatior
+                        </td>
+                        <td>
+                            {{ flight.crew.navigator}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Depature Time
+                        </td>
+                        <td>
+                            {{ flight.departTime | date('m/d/y h:i:s A')}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Depature Airport
+                        </td>
+                        <td>
+                            {{ flight.departAirport}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Arrival Time
+                        </td>
+                        <td>
+                            {{ flight.arrivalTime | date('m/d/y h:i:s A')}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Arrival Airport
+                        </td>
+                        <td>
+                            {{ flight.arrivalAirport}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Cargo</td>
+                    </tr>
+                    {%  for cargo in flight.cargo %}
+                        <tr>
+                            <td>    </td>
+                            <td>
+                                Skid Id {{cargo}}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+{% endblock %}
